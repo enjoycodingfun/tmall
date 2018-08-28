@@ -121,11 +121,11 @@
 
     /*同步索引*/
     function refresh_index(){
-        layer.confirm('确认要同步数据库中商品数据至ES索引库吗？',{icon:3},function(index){
+        layer.confirm('确认要同步数据库中商品数据至索引库吗？',{icon:3},function(index){
             var index = layer.load(3);
             $.ajax({
                 type: 'GET',
-                url: '/item/importIndex',
+                url: '${pageContext.request.contextPath}/importIndex',
                 success: function(data) {
                     layer.close(index);
                     if(data.success!=true){
@@ -134,6 +134,7 @@
                     }
                     refresh();
                     layer.alert("同步成功",{icon: 1});
+                    console.log(data.msg);
                 },
                 error:function(XMLHttpRequest){
                     layer.close(index);
@@ -141,7 +142,6 @@
                 }
             });
         });
-
     }
 </script>
 </body>

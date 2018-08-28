@@ -5,16 +5,21 @@ import com.qf.common.utils.JsonUtils;
 import com.qf.common.utils.PropKit;
 import com.qf.common.utils.StrKit;
 import com.qf.manager.pojo.dto.ItemResult;
+import com.qf.manager.pojo.dto.MessageResult;
 import com.qf.manager.pojo.dto.PageParam;
 import com.qf.common.utils.FastDFSFile;
+import com.qf.manager.pojo.dto.ZTreeNode;
 import com.qf.manager.pojo.po.TbProducts;
 import com.qf.manager.pojo.vo.Category;
 import com.qf.manager.pojo.vo.ItemCat;
 import com.qf.manager.pojo.vo.ItemSeach;
 import com.qf.manager.service.ItemService;
+import org.omg.CORBA.PRIVATE_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+import javax.jms.*;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +42,11 @@ public class ItemAction {
 
     @Autowired
     private ItemService itemService;
+    @Resource
+    private Destination topicDestination;
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
 
     /**
      * 分页搜索显示所有商品
@@ -235,5 +247,36 @@ public class ItemAction {
         }
         return jsonString;
     }
+    @ResponseBody
+    @RequestMapping(value = "/importIndex", method = RequestMethod.GET)
+    public MessageResult importIndex (){
+        MessageResult mr = new MessageResult();
+        mr.setSuccess(false);
+        mr.setMsg("import failed");
+        try {
+            itemService.importIndexLib();
+            mr.setSuccess(true);
+            mr.setMsg("import success");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return mr;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/topicActivemq", method = RequestMethod.GET)
+    public void testmq(){
+        String pid = "1000508";
+
+        jmsTemplate.send(topicDestination, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                TextMessage textMessage = session.createTextMessage(pid);
+
+                return textMessage;
+            }
+        });
+
+    }
+
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.detail.dao.ProductDao" >
+
+  <sql id="Base_Column_List" >
+    p.pid, p.pname, p.sell_point as sellPoint, p.price, p.num, p.pimage, p.cid, p.status, p.created, p.updated
+  </sql>
+
+
+
+  <select id="findProductByPid" parameterType="java.lang.String" resultType="com.qf.detail.pojo.po.TbProducts">
+
+    select
+    <include refid="Base_Column_List" />
+    from tb_products p
+    where p.pid=#{pid}
+
+  </select>
+
+</mapper>

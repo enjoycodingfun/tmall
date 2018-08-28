@@ -11,6 +11,13 @@
         <module>../shangcheng-common</module>
         <module>../shangcheng-manager</module>
         <module>../shangcheng-portal</module>
+        <module>../shangcheng-search</module>
+        <module>../shangcheng-product</module>
+        <module>../shangcheng-detail</module>
+        <module>../shangcheng-provider</module>
+        <module>../shangcheng-consumer</module>
+        <module>../shangcheng-shiro</module>
+        <module>../shangcheng-quartz</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -94,6 +101,12 @@
                 <artifactId>shiro-core</artifactId>
                 <version>${shiro.version}</version>
             </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.apache.shiro</groupId>-->
+                <!--<artifactId>shiro-all</artifactId>-->
+                <!--<version>1.4.0</version>-->
+                <!--<type>pom</type>-->
+            <!--</dependency>-->
 
             <!--全文检索的相关jar，Lucene，Solr-->
             <dependency>
@@ -301,6 +314,11 @@
                 <artifactId>activemq-pool</artifactId>
                 <version>${activemqpool.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-client</artifactId>
+                <version>5.11.3</version>
+            </dependency>
             <!-- 文件上传组件 -->
             <dependency>
                 <groupId>commons-fileupload</groupId>
@@ -313,6 +331,16 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
+            </dependency>
+            <!--解决跨域问题-->
+            <dependency>
+
+                <groupId>com.thetransactioncompany</groupId>
+
+                <artifactId>cors-filter</artifactId>
+
+                <version>1.7</version>
+
             </dependency>
 
             <!-- dubbo相关 -->
@@ -345,6 +373,11 @@
                 <groupId>org.wltea.analyzer</groupId>
                 <artifactId>IKAnalyzer</artifactId>
                 <version>${IKAnalyzer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.1.2</version>
             </dependency>
 
         </dependencies>

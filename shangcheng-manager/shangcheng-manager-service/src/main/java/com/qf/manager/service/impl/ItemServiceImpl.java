@@ -11,9 +11,12 @@ import com.qf.manager.pojo.vo.Category;
 import com.qf.manager.pojo.vo.ItemCat;
 import com.qf.manager.pojo.vo.ItemSeach;
 import com.qf.manager.service.ItemService;
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +30,10 @@ public class ItemServiceImpl implements ItemService{
     private TbItemMapper itemDao;
     @Autowired
     private TbProductsMapper tbProductsMapper;
+    @Autowired
+    private SolrServer solrServer;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
     @Override
     public ItemResult<ItemCat> listItems(PageParam pageParam, ItemSeach itemSeach) {
@@ -141,6 +148,38 @@ public class ItemServiceImpl implements ItemService{
     public int editProduct(TbProducts p) {
 
         return tbProductsMapper.updateByPrimaryKeySelective(p);
+    }
+
+    @Override
+    public void importIndexLib() {
+        try {
+            //1 采集数据
+            TbProductsExample example = new TbProductsExample();
+            TbProductsExample.Criteria criteria = example.createCriteria();
+            List<TbProducts> list = tbProductsMapper.selectByExample(example);
+            //2 导入索引库（遍历集合 documentList）
+            for (TbProducts p : list) {
+                //a Document
+                SolrInputDocument document = new SolrInputDocument();
+
+                //b 把list中每个对象的属性设置到document的field
+                document.addField("id", p.getPid());
+                document.addField("sell_point",p.getSellPoint());
+                document.addField("pdesc",p.getPdesc());
+                document.addField("pname",p.getPname());
+                document.addField("price",p.getPrice());
+                document.addField("pimage",p.getPimage());
+
+
+                //c addDocument
+                solrServer.add(document);
+            }
+            //d 提交
+            solrServer.commit();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            e.printStackTrace();
+        }
     }
 
    /* @Override

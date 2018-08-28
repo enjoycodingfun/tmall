@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+    ">
+
+    <!--1.ActiveMqConnectionFactory-->
+    <bean id="activeMqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://106.12.9.64:61616"/>
+    </bean>
+    <!--2.ConnectionFactory-->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <property name="targetConnectionFactory" ref="activeMqConnectionFactory"/>
+    </bean>
+    <!--3.topicDestination-->
+    <bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="productsAddTopic"/>
+    </bean>
+    <!--4.配置自定义的监听器-->
+    <bean id="productsAddMessageListener" class="com.qf.search.listener.ProductsAddMessageListener"/>
+    <!--5.配置默认的容器-->
+    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <!--注入属性：连接工厂-->
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <!--注入属性：目标对象-->
+        <property name="destination" ref="topicDestination"/>
+        <!--注入属性：自定义监听器-->
+        <property name="messageListener" ref="productsAddMessageListener"/>
+
+    </bean>
+</beans>

@@ -116,14 +116,14 @@
                 </ul>
             </dd>
         </dl>
-        <%--<dl id="menu-search">
+        <dl id="menu-search">
             <dt><i class="Hui-iconfont">&#xe665;</i> 搜索管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
                     <li><a data-href="refresh-index" data-title="同步索引" href="javascript:void(0)">同步索引</a></li>
                 </ul>
             </dd>
-        </dl>--%>
+        </dl>
         <%--<dl id="menu-comments">
             <dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>

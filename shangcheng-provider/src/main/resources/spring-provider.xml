@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+">
+    <!--自定义的实现类-->
+    <bean id="demoService" class="com.qf.myservice.impl.DemoServiceImpl"/>
+    <!--暴露接口 interface指暴露哪个接口，ref指向这个接口的实现类-->
+    <dubbo:service interface="com.qf.myservice.DemoService" ref="demoService"/>
+    <!--显示应用名称-->
+    <dubbo:application name="testprovider"/>
+    <!--暴露的dubbo端口号-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--定义注册中心,只要保证使用telnet能够连接指定服务器的2181端口即可-->
+    <dubbo:registry address="zookeeper://106.12.9.64:2181"/>
+</beans>

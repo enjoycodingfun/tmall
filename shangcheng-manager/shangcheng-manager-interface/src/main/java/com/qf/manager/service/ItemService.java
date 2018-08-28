@@ -34,5 +34,7 @@ public interface ItemService {
 
     int editProduct(TbProducts p);
 
+    void importIndexLib();//用来导入索引 by zz
+
    /* List<ZTreeNode> getItemCatList(int parentId);*/
 }

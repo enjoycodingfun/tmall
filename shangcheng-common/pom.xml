@@ -52,6 +52,11 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+
+            <artifactId>cors-filter</artifactId>
+        </dependency>
         <!--单元测试-->
         <dependency>
             <groupId>junit</groupId>

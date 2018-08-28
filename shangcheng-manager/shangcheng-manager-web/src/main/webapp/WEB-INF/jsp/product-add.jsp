@@ -84,7 +84,7 @@
                     <div class="queueList">
                         <div id="dndArea" class="placeholder">
                             <div name="filePicker" id="filePicker-2"></div>
-                            <p>或将照片拖到这里，最多可选5张</p>
+                            <p><button>或将照片拖到这里，最多可选5张</button></p>
                         </div>
                     </div>
                     <div class="statusBar" style="display:none;">
@@ -92,7 +92,7 @@
                         <div class="info"></div>
                         <div class="btns">
                             <div id="filePicker2"></div>
-                            <div class="uploadBtn">开始上传</div>
+                            <div class="uploadBtn"><button>开始上传</button></div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="shangcheng-common" />
+        <module name="shangcheng-consumer" />
+        <module name="shangcheng-detail" />
+        <module name="shangcheng-manager-dao" />
+        <module name="shangcheng-manager-interface" />
+        <module name="shangcheng-manager-pojo" />
+        <module name="shangcheng-manager-service" />
+        <module name="shangcheng-manager-web" />
+        <module name="shangcheng-product-dao" />
+        <module name="shangcheng-product-interface" />
+        <module name="shangcheng-product-pojo" />
+        <module name="shangcheng-product-service" />
+        <module name="shangcheng-product-web" />
+        <module name="shangcheng-provider" />
+        <module name="shangcheng-quartz" />
+        <module name="shangcheng-search" />
+        <module name="shangcheng-shiro" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="shangcheng-common" target="1.8" />
+      <module name="shangcheng-consumer" target="1.8" />
+      <module name="shangcheng-detail" target="1.8" />
+      <module name="shangcheng-manager" target="1.8" />
+      <module name="shangcheng-manager-dao" target="1.8" />
+      <module name="shangcheng-manager-interface" target="1.8" />
+      <module name="shangcheng-manager-pojo" target="1.8" />
+      <module name="shangcheng-manager-service" target="1.8" />
+      <module name="shangcheng-manager-web" target="1.8" />
+      <module name="shangcheng-parent" target="1.8" />
+      <module name="shangcheng-portal" target="1.8" />
+      <module name="shangcheng-product" target="1.8" />
+      <module name="shangcheng-product-dao" target="1.8" />
+      <module name="shangcheng-product-interface" target="1.8" />
+      <module name="shangcheng-product-pojo" target="1.8" />
+      <module name="shangcheng-product-service" target="1.8" />
+      <module name="shangcheng-product-web" target="1.8" />
+      <module name="shangcheng-provider" target="1.8" />
+      <module name="shangcheng-quartz" target="1.8" />
+      <module name="shangcheng-search" target="1.8" />
+      <module name="shangcheng-shiro" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

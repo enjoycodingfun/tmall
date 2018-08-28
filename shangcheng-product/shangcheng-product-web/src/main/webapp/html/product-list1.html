@@ -1,0 +1,801 @@
+﻿    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>手机-魅族商城</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//store.res.meizu.com/layout/img/favicon-2e71785f44.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="//store.res.meizu.com/layout/img/favicon-2e71785f44.ico" rel="icon" type="image/x-icon" />
+    <meta name="description" content="魅族商城提供各种手机产品，包括，品质保障，可按推荐、商品上架时间，价格等放心购买，魅族商城将为您提供最好的子类目名称产品，全场包邮，7天无理由退货，15天换货保障。">
+    <meta name="keywords" content="手机,，魅族，魅族手机，魅族商城">
+    <link rel="stylesheet" href="static/css/layout-f37b367275.css" />
+
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv-3ed50bb69a.js" type="text/javascript"></script>
+    <script src="static/js/es5-shim-50bbaee56e.js" type="text/javascript"></script>
+    <![endif]-->
+    <link href="static/css/list-fd507091f8.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- common header -->
+        <script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    var keyword = oneValues()
+
+    //接收一个值
+    function oneValues(){
+        var result;
+        var url=window.location.search; //获取url中"?"符后的字串
+        if(url.indexOf("?")!=-1){
+            result = url.substr(url.indexOf("&")+1);
+            result = result.substr(result.indexOf("=")+1);
+        }
+        /*escape(string);
+        unescape(string);
+        encodeURI(string);
+        decodeURI(string);
+        encodeURIComponent(string);
+        decodeURIComponent(string);*/
+
+        result = decodeURI(result);
+        return result;
+    }
+
+    $(function(){
+        alert(keyword)
+        $.ajax({
+                url:"http://localhost:83/search/search?keyword="+ keyword,
+                type:"GET",
+                dataType:"json",
+                success:function(data){
+
+                    alert(data.list);
+
+                }
+            }
+        )
+
+
+
+    })
+
+
+</script>
+<header class="layout-header clearfix" id="layoutHeader">
+    <div class="mzcontainer">
+        <div class="layout-header-logo">
+            <a target="_blank" href="http://www.meizu.com/index.html" class="layout-header-logo-link" alt="魅族科技"
+               data-mtype="wmz_public_yt_logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAAAoCAYAAACVWZSOAAAAAXNSR0IArs4c6QAACRFJREFUeAHtXX+MHFUdf9/ZvR/c/pgp5QQxsYiKSkOIWkNSmjvudo+jJlZoDkxsrCXGHxE1IpXYGGiVRDE9YgSpgmARqCEcf+DP9HK7PaD8YVJqgtiGFkOpP1rbO3szu3vX63Vnnp+5drdXejNv9rozN7vzNrnc7Pt+5/vzfd++931vvkPsXZ/LX+eJybHCBsb4rZzz5YzRe3AdexdaSL7SDCN+lBjtYQob2tijvrCFyLpY4RK79Ayz2OeJsy7O+JWg13GxNBd+Pw1O9mnfdbs/uavYzc3yS044RPR4Kat91QlutydG9J3wc78bTnAwmiHGDzBSnlgRS297qYfKTryTOeMuzq2fO8HbWtvef6K7419O8Hq3J3L6Txjn9zrRjc8FJHP6QGnMeAQ3XHGunZ+7DN0Vb2WcLUNQLGMmGxjM6W+oeX2DkdH+uhBRl+an3nfKmvkNN3nGvj8MmisYTRaiS2Pfw1th++sYt372WtnoxsA/gEEjDO64aLMqFQqpEf17UGzo/GCrQBvjv+2kssV3p3PGLbVKnMwVr522Tu1B8M4GW633S3x/LAB/rE3lC5/zh3rwVGcDLpnXb7cY/3Hw7H3h2GEx6/nky8WPeaWu7taXMGb+Afjv9XqPxAvSAvyzQXLzk5fSOcqTmDs94ieToGlzzlLstPmwV77WDN2HX/erveJLvMAtsDRwjj4xVE5ahQ3obJf7RH/RyEKnLNZznxAJcNmrPGVZ/OsiPAlfTAvw/YvJvZ68FWbxW+tJMEy0TC7WbfqUvd7jbWGSW8oy1wJkUSz2y7ktjXwdx6L0WjcFkCL7PRS+t9CTOlhrpsierk6V9aIjfaK9k1lthSPcAbB8H2/959HiDUgHPwb5XdZq5KrbGfI2jnMCDFnCZxVGm/WMeqhW/R3ED2Uzth5qTjQtVJFUfuI2i9NvkaBrF9IgtrXYk35TiNcgCEiakON0Eh3s4LIrtduLvekDC+lsyqUuPfkiDLRvOc0Us+ndSpzWMHLeo4FDHXWrsrdccDAg3JPRvmhktbcXon+Vh7yoWiCV079iWWRnw4XBRsR2lDLqpurNTXCBgOOzmcp5dSE+bHfueWEhaCz0qP/ABqnz/J5IvGFPzBEHv+7D9dhID4GpQiECNqnvszh/DH3O0eYVQTHAPb4xo61vtoHOOdhszS0qVAwQ2v+c+SYjAq4UWr3nCoZ59dyvYbvewrmCQxWPYgnwQy+y4ZftAftkTDMOduedNPFiDIkjLVCLBT70Fm8bzBvPIms8IL4PCRKib5Wy6qNi3MbEkAHXmH5rCKkv/QtP//ew8TsE201igXF+Msa+UOpVnxfjNi6GDLjG9V2oJe8cLV0xVcKBaM6uFwmKKWQRmYTbSr1aXoTb6HAZcI3uwRDKn37Z+PDUTHkYon1AJB7OZo/FFLba6NX2inCbAS4Drhm8GCId1FF9hTnD/4xMZKdYLDqktFK/0a2+JcZtDgwZcC5+xNqjH883pVxQfAXFW9ivjG7tkJBJSB7hSe8y+k3TegEp06RIZkwj/9be2nLLeFfiqAi3meAy4Fy8iY7TjQ3abhcUX0GmGbenZeKAC8G2QCJnrDMtvh1rthaRURBsr7Rwbc14Fxki3GaDu+/DNZu2Uh9fLJDITXwHU8hnMDh5CDZ68bKY1j/RF71gs40vA86XLhgNophy05mSAuwhBBvOCbh/sMf2xOqMOvBOD027YzYvVE4pm9e3vmp20yiP48HlJzGFXO+FEYLtRzg98v0hL8hNjCMDromd65dqdqGpPWMGDiCz1UIeqEWCnM63cXrkYSFuBBBkwEXAyfVUMZUrLC0dN/6ENdsNQrpEpxFs6xFszwlxI4IgA87F0ZgG7cLaZLcLiq+gOI+/44lBQNsCWv7ksjI/hcwp/4hILmQiS8jyrkWwjYhwowSXAefibWQBcsW+JeEvrhTAtkBipHTdaWt6J8xl1+l0/WCgGsdDu58uZNU9rogRBMosZQSdXqvKyXyxC8/5voL7hMGGKpqHiSk3ymCb38oy4Oa3i2w9awG7HALn5jC2ADSRUTAjeOOS9taVeBr/oAg3qnAZcFH1vAe9ayqHwNir8TjrGl+VOOKBdGRRZMBF1vXuiqMcwv2eyyGg0JSW0G7We5bo7lQlVAac7APnWWCLXQ5hRP8FyiH84DyA0xeiX6/Oamv/vZJOOqHI9nMWkAF3zhYXXCGtLTz1fsFNi9FQp22B2XIIOWMISc+veVODHkSZwy8NEZne8IPHmjHNdJBc8coRV34y4Djeu+PwQcD12yO+A7ipmu1anyiH8EcE21qhYvabbBR2N2pZbhLi+o1A3NF/NmuyzDV+i1Chf9UoSv8Ru7ny/cL/ZPq6D2edaIBXLSl0DNWnL7SN3cL5Jwfz+tMomb757l710Ga0zI/oXyv2tALhefiI8QyCLSvUBPsDCvEvX6NqO9hr4qcDhPQ8IOxdQacd0Ygfd4QBgJcF3o8psh5rZ8/pq1Rf1piYe9NgvvTRMdMYRJ+52lkeftzXgJstBOtqDmfRgoO41LWEEHgxyLoy5+u25nS2NTihqpyQKXyomNU2Vht8uEjmJnqQ9r/DE2nO4xiftr85oW/3hF8HJJRsuKbg8FQ4yoruc5mk2A5sx4i1rTzNtqFUXx2kWTgJzPz3R2K65Gai9jZ1J6o3R/ZxEds26JAb3GwUZtjZquAHwixjVTaFXox8wI2voiKOIW2rGiWCF9iwvqqR1cas+8Gwy4+lwbFLlPRTkQ8421GxmPUADPJ22J3ml3yYNh/2i3YQdO/p1Z6G/0aD4LVgHsS+OdZDJRlwsOCZDdvYZ3AZqYI2lc4Tiyk7KteN+N8uia500ABSdK+HUX7MoDaVMtrss7cy4M56qJRN7W9X2j6FkTIXRqf5KVOhVx2G3g09rS6sVE8kO7UbGSlPYU2OZenif2DTY6TQHcU+rTrldQ84BZMNPz/1eKwEr89xFrE2+f+X6fgPygD0wUgZOO1JZJXseolTzvT9hyAj6KLfWf5iHCEN6H2XorA7ofde/DVkEunY9TQ5mVXvbFHiH1cU5adYm/4dfwFWBps9AHDEHrSJlG8kOtUPVn7ZKj3l/3+/3GhNgN6RAAAAAElFTkSuQmCC" style="max-height:20px;max-width:110px;color:  #0bbbef;margin-top:  30px;">
+            </a>
+        </div>
+        <ul class="layout-header-service clearfix">
+            <li class="layout-header-service-item layout-header-service-search" id="layoutHeaderSearch"></li>
+            <li class="layout-header-service-item" id="layoutHeaderUser">
+                <a class="layout-header-service-link" href="//me.meizu.com/member/index"
+                   data-mtype="wmz_public_yt_mycenter">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAB0VBMVEXc3Nzh4eHk5OTl5eXo6Ojo6Ojp6enp6enq6urq6urr6+vr6+vr6+vr6+vs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozt7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3t7e3u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u6wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u9vb3AwMDBwcHCwsLExMTFxcXGxsbHx8fIyMjJycnKysrLy8vNzc3Q0NDT09PU1NTV1dXW1tbY2Njb29vd3d3e3t7h4eHi4uLk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u53rUvhAAAAbHRSTlMFBwkKDxAREhYZHB4fIiYoKisvNTg5Oj9BQ0dKTE1OUFZXWltcYGVqa291dnd5e31/gYKDhYiKi5CSnqKmqKmrrK2vsLW2uby9vsPEx8vN09TX2Nna3eDh4uPk5+jq6+3u7/Dy9PX29/j5+/6pgdBFAAACQklEQVQYGY3BiV8MYRwH4F9E5CpHRQjJkaOEHJEjV6ScOWvTJil2zvcdhVCkSLvb1k77/Wtts+/uZ+ed2XafhzxKqpou3XkVDAbar57bvYHyqWkJIMtwW20x5bb6eDc8es6uoxxqn8FX72Hys+YGcurcTB7burGCwWqSVCKPg+RSOYx86ijLFhRgL2WseokCjGyitJsoSBcJNZDZ0fBc1IbsGKX0QvKHaUn8L2SltKwekqkPBk8yPv6GpJWW9cEtEmLcwUJhSEqIqBqSCZUL6hdI6omoFW6JTwYXTGbD7QHR2gG4xbnJBWbEICmjnZAsMpMLTJ+H5AQ1QRJnJheYPg/JZboGiW2ZXGDmAiQd1A7ZqM4F01qC5Am9huyXwgX1O2R9NARZVOWCMgfZWxqEx7hi8SRLHYPHAAXgsaDoFueWri7Ao5/uwStqhDQtZETg9ZSuw4c9Mzk5HYeP+9QMWTwOYdGG7ArtgUt0etw0wnDMauzbTDSBbKdoPbJExjRFZ4Y2GY7F5n5opqkr2ucIsuwguoWMf4rKHZpqGKrGHVpoFhnPiWgf0hYVw+ICYzzNUGJIO01ERe8gTCncj6VMIG0jJTUjJTGqc18mt5Fym5YV98OxxDTTl6HNI6WcHIeQ8tOwfJlfE3BcIKELKXYOCTh6ikgofY9CVFBGFQpwhLIcQF4N5FKHPBpJsn8IKzlKHuWdyOnFLvLTMAJ/54vJX9nFIXi1bafcSk92wOXhmc2Ux9b6lruPAsHgm8cdrY0VJPsPoQz7gruOhR8AAAAASUVORK5CYII="
+                         alt=" " class="layout-header-service-avatar">
+                </a>
+            </li>
+            <li class="layout-header-service-item layout-header-service-cart" id="layoutHeaderCart">
+                <a class="layout-header-service-link" href="//cart.meizu.com" data-mtype="wmz_public_yt_cart">
+                    <i class="layout-font layout-font-cart1"></i>
+                    <span class="layout-header-service-cart-num">0</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="layout-header-nav clearfix" id="layoutHeaderNav">
+            <li class="layout-header-nav-item">
+                <a href="//store.meizu.com/index.html" class="layout-header-nav-link" data-mtype="wmz_public_yt_store">魅族商城</a>
+            </li>
+                <li class="layout-header-nav-item">
+                    <a href="https://lists.meizu.com/page/list/?categoryid=76" class="layout-header-nav-link"
+                       data-mtype="wmz_public_yt_custom_1">魅族手机</a>
+                </li>
+                <li class="layout-header-nav-item">
+                    <a href="https://lists.meizu.com/page/list/?categoryid=76" class="layout-header-nav-link"
+                       data-mtype="wmz_public_yt_custom_2">魅蓝手机</a>
+                </li>
+                <li class="layout-header-nav-item">
+                    <a href="https://lists.meizu.com/page/list/?categoryid=186" class="layout-header-nav-link"
+                       data-mtype="wmz_public_yt_custom_3">数码配件</a>
+                </li>
+                <li class="layout-header-nav-item">
+                    <a href="https://lists.meizu.com/page/list/?categoryid=231" class="layout-header-nav-link"
+                       data-mtype="wmz_public_yt_custom_4">影音娱乐</a>
+                </li>
+                <li class="layout-header-nav-item">
+                    <a href="https://lists.meizu.com/page/list/?categoryid=222" class="layout-header-nav-link"
+                       data-mtype="wmz_public_yt_custom_5">家居生活</a>
+                </li>
+            <li class="layout-header-nav-item">
+                <a href="http://care.meizu.com/" class="layout-header-nav-link" target="_blank"
+                   data-mtype="wmz_public_yt_service">服务</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="http://retail.meizu.com/index.html" class="layout-header-nav-link" target="_blank"
+                   data-mtype="wmz_public_yt_offstore">专卖店</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="http://www.flyme.cn/" class="layout-header-nav-link" target="_blank"
+                   data-mtype="wmz_public_yt_flyme">Flyme</a>
+            </li>
+            <li class="layout-header-nav-item">
+                <a href="//bbs.meizu.cn/" class="layout-header-nav-link" target="_blank" data-mtype="wmz_public_yt_bbs">社区</a>
+            </li>
+        </ul>
+        <div class="layout-header-nav-downmenu" id="layoutHeaderNavDownmenu"></div>
+    </div>
+</header>
+
+<!--下面是模板标签，不可删除-->
+
+<main class="wrapper page-search" id="main">
+    <div class="container">
+        <section class="crumbs clearfix">
+            <a data-mtype="store_list_mbx_index" href="//store.meizu.com/index.html?click=store_list_mbx_index">首页</a> &nbsp;&gt;&nbsp;
+            <span class="crumbs-level" id="crumbsLevel" data-mtype="">
+                手机
+            </span>
+        </section>
+
+    <section class="brand" id="brand" style="display: none"></section>
+
+        <section class="selector" id="selector">
+            <!--  分类部分 start -->
+                <div class="sl-category" id="slCategory">
+                </div>
+            <div class="sl-prop" id="slProp">
+                        <div class="sl-line-wrap">
+                            <div class="mod-key"><span>品牌：</span></div>
+                            <div class="mod-value">
+                                <div class="mod-value-list">
+                                    <ul>
+                                           <li class="vm-all">
+                                                <a title="全部" data-value="80:27057,27058,27059,23954,23955,24243,23669,26153,26604,28004,24475,26650,26651,24634,22463" data-mtype="store_list_xf_1_all" href="javascript:;">全部</a>
+                                           </li>
+                                                   <li>
+                                                       <a data-value="80:27057,27058,27059,23954,23955"  data-mtype="store_list_xf_1_1" title="魅族品牌" href="javascript:;">魅族品牌</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="80:24243,23669,26153,26604,28004,24475,26650,26651,24634,22463"  data-mtype="store_list_xf_1_2" title="魅蓝品牌" href="javascript:;">魅蓝品牌</a>
+                                                   </li>
+                                    </ul>
+                                </div>
+                            </div>
+                                <div class="mod-ext">
+                                    <a class="sl-e-more J_extMore" href="javascript:;" data-mtype="store_list_xf_1_more" style="">更多<i class="iconfont">&#xe663;</i></a>
+                                </div>
+
+                        </div>
+                        <div class="sl-line-wrap">
+                            <div class="mod-key"><span>屏幕尺寸：</span></div>
+                            <div class="mod-value">
+                                <div class="mod-value-list">
+                                    <ul>
+                                           <li class="vm-all">
+                                                <a title="全部" data-value="203:18408,22,23,27122,27123" data-mtype="store_list_xf_2_all" href="javascript:;">全部</a>
+                                           </li>
+                                                   <li>
+                                                       <a data-value="203:18408"  data-mtype="store_list_xf_2_1" title="5.2英寸" href="javascript:;">5.2英寸</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="203:22"  data-mtype="store_list_xf_2_2" title="5.5英寸" href="javascript:;">5.5英寸</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="203:23"  data-mtype="store_list_xf_2_3" title="5.7英寸" href="javascript:;">5.7英寸</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="203:27122"  data-mtype="store_list_xf_2_4" title="5.46英寸" href="javascript:;">5.46英寸</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="203:27123"  data-mtype="store_list_xf_2_5" title="5.95英寸" href="javascript:;">5.95英寸</a>
+                                                   </li>
+                                    </ul>
+                                </div>
+                            </div>
+                                <div class="mod-ext">
+                                    <a class="sl-e-more J_extMore" href="javascript:;" data-mtype="store_list_xf_2_more" style="">更多<i class="iconfont">&#xe663;</i></a>
+                                </div>
+
+                        </div>
+                        <div class="sl-line-wrap">
+                            <div class="mod-key"><span>机身内存：</span></div>
+                            <div class="mod-value">
+                                <div class="mod-value-list">
+                                    <ul>
+                                           <li class="vm-all">
+                                                <a title="全部" data-value="219:36,24245,21211,37,21089,23963,38,23961,22234,23962,23964" data-mtype="store_list_xf_3_all" href="javascript:;">全部</a>
+                                           </li>
+                                                   <li>
+                                                       <a data-value="219:36,24245"  data-mtype="store_list_xf_3_1" title="16GB" href="javascript:;">16GB</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="219:21211,37,21089"  data-mtype="store_list_xf_3_2" title="32GB" href="javascript:;">32GB</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="219:23963,38,23961"  data-mtype="store_list_xf_3_3" title="64GB" href="javascript:;">64GB</a>
+                                                   </li>
+                                                   <li>
+                                                       <a data-value="219:22234,23962,23964"  data-mtype="store_list_xf_3_4" title="128GB" href="javascript:;">128GB</a>
+                                                   </li>
+                                    </ul>
+                                </div>
+                            </div>
+                                <div class="mod-ext">
+                                    <a class="sl-e-more J_extMore" href="javascript:;" data-mtype="store_list_xf_3_more" style="">更多<i class="iconfont">&#xe663;</i></a>
+                                </div>
+
+                        </div>
+            </div>
+        </section>
+
+        <section class="filter clearfix" id="filter" style="display:
+            block">
+            <div class="filter-order" id="J_filterOrder">
+                <a class="active" data-tag="0" data-mtype="store_list_sx_1" href="javascript:void(0);">
+                    推荐
+                </a>
+                <a data-tag="1" data-mtype="store_list_sx_2" href="javascript:void(0);">
+                    新品
+                </a>
+                <a data-tag="2" data-mtype="store_list_sx_3" href="javascript:void(0);">
+                    价格<i class="icon-arrow-down"></i>
+                </a>
+            </div>
+            <div class="filter-condition" id="J_filterCondition">
+                <label class="bs-checkbox" data-mtype="store_list_sx_xz" >
+                    <i></i>仅显示有货商品
+                </label>
+            </div>
+        </section>
+
+<section class="goods-list" id="goodsList">
+        <ul class="goods-list-wrap clearfix" id="goodsListWrap">
+                <!--<li class="gl-item" data-init="0">
+                        <div  class="compare-btn-list"  id="J_compare" data-mtype="store_list_kw_1_compare">
+                            <i  class="iconfont  icon-duibi compare-duibi"></i>
+                            <span>对比</span>
+                        </div>
+                    <a data-mtype="store_list_kw_1" target="_blank" href="//detail.meizu.com/item/meilan6t.html?skuId=7517&click=store_list_kw_1" title="">
+                        <div class="gl-item-wrap">
+                            <div class="mod-pic">
+                                    <img width="220" height="220" class="lazy j-modProduct" data-original="//openfile.meizu.com/group1/M00/04/8C/Cgbj0VsM-iyAAgTIAAbXIwKFVL4647.png@240x240.jpg">
+                            </div>
+                            <div class="item-slide j-pro-wrap">
+                                <dl>
+                                            <dd class="active" data-mtype="store_list_kw_1_clr_1" data-skuid="7517">
+                                                <img width="40" height="40" class="lazy" data-original="//openfile.meizu.com/group1/M00/04/8C/Cgbj0VsM-iyAAgTIAAbXIwKFVL4647.png@120x120.jpg">
+                                            </dd>
+                                            <dd  data-mtype="store_list_kw_1_clr_2" data-skuid="7519">
+                                                <img width="40" height="40" class="lazy" data-original="//openfile.meizu.com/group1/M00/04/8D/Cgbj0VsM-kuAGYZmAAm_NQr8nSk674.png@120x120.jpg">
+                                            </dd>
+                                            <dd  data-mtype="store_list_kw_1_clr_3" data-skuid="7522">
+                                                <img width="40" height="40" class="lazy" data-original="//openfile.meizu.com/group1/M00/04/7E/Cgbj0FsM-juAKmulAAnA4CeHAb4634.png@120x120.jpg">
+                                            </dd>
+                                </dl>
+                            </div>
+
+                            <div class="slide-btn j-modBtns">
+                                <span data-mtype="store_list_kw_1_clr_l" class="prev iconfont disabled">&#xe65b;</span>
+                                <span data-mtype="store_list_kw_1_clr_r" class="next iconfont">&#xe659;</span>
+                            </div>
+
+
+                                <h2>魅蓝 6T</h2>
+                                <h3 class="red" title="双摄全面屏 游戏长续航">
+                                双摄全面屏 游戏长续航
+                                </h3>
+                                <dd class="mod-price">
+                                    <span>￥</span>
+                                    <span class="vm-price">799</span>
+                                        <span class="vm-start">起</span>
+                                </dd>
+                        </div>
+                    </a>
+                </li>-->
+        </ul>
+</section>
+<section class="empty clearfix" id="empty" style="display:none;">
+    <div class="empty-bd">
+        <div class="empty-bd-pic"></div>
+        <div class="empty-bd-info">
+            <h4 class="yahei">抱歉没有找到相关商品</h4>
+            <p>建议您：<br/>
+                1.适当减少筛选条件<br/>
+                2.尝试其他关键字
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="pages" id="pages">
+</section>
+
+<section class="more-brands" style="display: none"></section>
+<section class="list-floorad" style="display: none"></section>
+
+    <section class="recommend" id="recommend">
+        <div class="recommend-hd">
+            <h2 class="mod-title">为您推荐</h2>
+            <div class="mod-control" id="recommendDirectionNav">
+                <a class="vm-prev flex-prev iconfont" id="J_recommendPrev" data-mtype="sotre_list_tj_a" href="#">
+                </a>
+                <a class="vm-next flex-next iconfont" id="J_recommendNext" data-mtype="sotre_list_tj_b" href="#">
+                </a>
+            </div>
+        </div>
+        <div class="recommend-slider" id="J_recommendSlider">
+            <ul class="recommend-slider-wrap">
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_1" class="rs-item-wrap" title="啊师傅电压是否都"
+                                   href="//detail.meizu.com/item/meizu15.html?click=store_list_tj_1"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img class="lazy" data-original="//openfile.meizu.com/group1/M00/04/0B/Cgbj0FrcblSAGHrPAAvT_qZZSA0427.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">魅族 15 </h4>
+                                    <h6 class="vm-subtitle" title=""></h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">2499</span>
+                                            <span class="vm-start">起</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_2" class="rs-item-wrap" title="魅蓝 6"
+                                   href="//detail.meizu.com/item/meilan_6.html?click=store_list_tj_2"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img class="lazy" data-original="//openfile.meizu.com/group1/M00/02/30/Cgbj0VnCGzuARl88AAnFI7AK-Xs392.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">魅蓝 6 </h4>
+                                    <h6 class="vm-subtitle" title=""></h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">599</span>
+                                            <span class="vm-price-old">¥699</span>
+                                    </p>
+                                </div>
+                                    <span class="mod-sign" style="background-color: #f0415f;">
+                                         特惠
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_3" class="rs-item-wrap" title="魅蓝 Note6"
+                                   href="//detail.meizu.com/item/meilannote6.html?click=store_list_tj_3"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img class="lazy" data-original="//openfile.meizu.com/group1/M00/02/03/Cgbj0VmtGa6AThj0AA1hVmco7-o197.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">魅蓝 Note6 </h4>
+                                    <h6 class="vm-subtitle" title=""></h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">799</span>
+                                            <span class="vm-price-old">¥899</span>
+                                    </p>
+                                </div>
+                                    <span class="mod-sign" style="background-color: #f0415f;">
+                                         特惠
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_4" class="rs-item-wrap" title="魅蓝 E2"
+                                   href="//detail.meizu.com/item/meilane2.html?click=store_list_tj_4"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img class="lazy" data-original="//openfile.meizu.com/group1/M00/00/2C/Cgbj0VkAUNmAeTU2AAklK6hJr4k492.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">魅蓝 E2 </h4>
+                                    <h6 class="vm-subtitle" title=""></h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">899</span>
+                                            <span class="vm-start">起</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_5" class="rs-item-wrap" title="魅蓝 S6"
+                                   href="//detail.meizu.com/item/meilans6.html?click=store_list_tj_5"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img class="lazy" data-original="//openfile.meizu.com/group1/M00/02/F3/Cgbj0Fpe-_yAFtuLAAw27mVWra0383.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">魅蓝 S6 </h4>
+                                    <h6 class="vm-subtitle" title=""></h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">999</span>
+                                            <span class="vm-start">起</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_6" class="rs-item-wrap" title="博思尼超轻VR一体机 赠送手柄"
+                                   href="//detail.meizu.com/item/X8.html?click=store_list_tj_6"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/cgbj0foo3bcafashaaj1eybpeu4164.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">博思尼超轻VR一体机 赠送手柄 </h4>
+                                    <h6 class="vm-subtitle" title="3期免息 高清vr一体机头戴式3d眼镜2K虚拟现实智能">3期免息 高清vr一体机头戴式3d眼镜2K虚拟现实智能</h6>
+                                    <p class="vm-price">
+                                            <span class="vm-price-flag">限时特惠</span>
+                                        <span>¥</span><span class="vm-price-text">599</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_7" class="rs-item-wrap" title="iEager Micro USB 数据线"
+                                   href="//detail.meizu.com/item/mc100ub1.html?click=store_list_tj_7"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/cgbj0vrkqvqadj1gaaesg6asy-g775.jpg@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">iEager Micro USB 数据线 </h4>
+                                    <h6 class="vm-subtitle" title="兼容广泛，传输稳定，高效传输">兼容广泛，传输稳定，高效传输</h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">19.9</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_8" class="rs-item-wrap" title="AKG K81DJ头戴护耳式监听HIFI耳机"
+                                   href="//detail.meizu.com/item/K81DJ.html?click=store_list_tj_8"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/cgbj0fovk1yauw4eaaj1e1dvr4e350.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">AKG K81DJ头戴护耳式监听HIFI耳机 </h4>
+                                    <h6 class="vm-subtitle" title="便携式强劲低音监听耳机">便携式强劲低音监听耳机</h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">199</span>
+                                    </p>
+                                </div>
+                                    <span class="mod-sign" style="background-color: #f0415f;">
+                                         爆品
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_9" class="rs-item-wrap" title="博思尼E8微纤维VR盒子"
+                                   href="//detail.meizu.com/item/E8.html?click=store_list_tj_9"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/cgbj0vot-tiawydeaab7yhuin2w996.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">博思尼E8微纤维VR盒子 </h4>
+                                    <h6 class="vm-subtitle" title="虚拟现实3d眼镜头戴式 手机电影院游戏智能头盔">虚拟现实3d眼镜头戴式 手机电影院游戏智能头盔</h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">49</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_10" class="rs-item-wrap" title="黑爵（AJAZZ）GT精英版流光RGB鼠标"
+                                   href="//detail.meizu.com/item/GT.html?click=store_list_tj_10"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/cgbj0fm6p7iayvgzaawanpruv_k340.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">黑爵（AJAZZ）GT精英版流光RGB鼠标 </h4>
+                                    <h6 class="vm-subtitle" title="9键架构、智能3模、RGB光效、驱动加持">9键架构、智能3模、RGB光效、驱动加持</h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">69.5</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_11" class="rs-item-wrap" title="先锋 SEC-CL31S 耳机"
+                                   href="//detail.meizu.com/item/SECL31S_ZQT.html?click=store_list_tj_11"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/1458092628-71347.png@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">先锋 SEC-CL31S 耳机 </h4>
+                                    <h6 class="vm-subtitle" title="线控高清通话，防缠绕线材，三角腔体">线控高清通话，防缠绕线材，三角腔体</h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">79</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="rs-item">
+                            <a data-mtype="store_list_tj_12" class="rs-item-wrap" title="乐心手环 测心率智能运动防水手表"
+                                   href="//detail.meizu.com/item/fithood.html?click=store_list_tj_12"
+                                target="_blank">
+                                <div class="mod-pic">
+                                        <img src="picture/cgbj0fr6tnqaanlwaacqsen19dw998.jpg@480x480.jpg" width="180" height="180">
+                                    </div>
+                                <div class="mod-desc">
+                                    <h4 class="vm-title">乐心手环 测心率智能运动防水手表 </h4>
+                                    <h6 class="vm-subtitle" title="慢跑时光，24小时监测你的心率">慢跑时光，24小时监测你的心率</h6>
+                                    <p class="vm-price">
+                                        <span>¥</span><span class="vm-price-text">79</span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </section>
+    </div>
+</main>
+
+<div  class="compare-bar"  id="compareBar"  style="position:fixed">
+    <div  class="diff-bar"  id="diffBar">
+        <div  class="diff-bar-title">
+            <div  class="bar-title">
+                <p>商品对比  (<span  class="bar-num"  id="barNum">0</span>/4)</p>
+            </div>
+            <div  class="operate" data-mtype="store_public_compare_close">
+                <i  class="iconfont  icon-chahao  hide-me"></i>
+            </div>
+        </div>
+
+        <div  class="diff-bd  tab-cons">
+            <div  class="tab-con  clearfix"  id="tabCon"  style="display:  block">
+                <div  class="diff-items"  id="diffItems">
+                </div>
+                <div  class="diff-operate"  id="diffOperate">
+                    <a  href="javascript:void(0);"  id="J_btnCompare" class="btn  btn-primary  btn-lg" data-mtype="store_public_compare"><i></i>对比</a>
+                    <a  href="javascript:void(0);"  id="J_compareClear" data-mtype="store_public_compare_delall">清空商品</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<footer class="layout-footer">
+    <div class="mzcontainer">
+        <section class="layout-footer-top clearfix">
+            <ul class="layout-footer-services clearfix">
+                <li class="layout-footer-services-item">
+                    <a href="http://service.meizu.com/help/delivery.html" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_freemail">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot1"></i></span>
+            <span class="layout-footer-services-text">顺丰包邮</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="https://store.meizu.com/marrive/summary.html" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_cityfast">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot2"></i></span>
+            <span class="layout-footer-services-text">100+ 城市次日送达</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="http://service.meizu.com/help/after_ser.html#policy1" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_noreasonreturn">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot3"></i></span>
+            <span class="layout-footer-services-text">7 天无理由退货</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="http://service.meizu.com/help/after_ser.html#policy2" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_exchangeguarantee">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot4"></i></span>
+            <span class="layout-footer-services-text">15 天换货保障</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="http://service.meizu.com/help/after_ser.html#policy3" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_freerepair">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot5"></i></span>
+            <span class="layout-footer-services-text">1 年免费保修</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="http://retail.meizu.com/index.html" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_offexperience">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot6"></i></span>
+            <span class="layout-footer-services-text">2300+ 线下体验店</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="http://care.meizu.com/msupport/summary.html" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_remotesupport">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot7"></i></span>
+            <span class="layout-footer-services-text">远程支持服务</span>
+          </a>
+                </li>
+                <li class="layout-footer-services-item">
+                    <a href="http://care.meizu.com/repair/home/profile.html" class="layout-footer-services-link" target="_blank" data-mtype="wmz_public_foot_homerepair">
+            <span class="layout-footer-service-wrap"><i class="layout-font layout-font-foot8"></i></span>
+            <span class="layout-footer-services-text">上门快修</span>
+          </a>
+                </li>
+            </ul>
+            <div class="layout-footer-contact">
+<p class="layout-footer-contact-desc">周一至周日 7:30-24:00</p>
+                <a href="tel:400-788-3333" class="layout-footer-contact-tel">400-788-3333</a>
+                <p>
+                    <a href="javascript:void(0);" data-mtype="wmz_public_foot_onservice" class="layout-footer-contact-online" onclick="window.open('https://mwx-api.meizu.com/live-service');">
+            <i class="layout-font layout-font-talk1"></i><span class="text">在线客服</span>
+          </a>
+                </p>
+            </div>
+        </section>
+        <section class="layout-footer-bottom clearfix">
+            <ul class="layout-footer-interlock clearfix">
+                <li class="layout-footer-interlock-item">
+                    <a href="//www.meizu.com/about.html" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_learn">了解魅族</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="http://hr.meizu.com/" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_join">加入我们</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="//www.meizu.com/contact.html" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_contact">联系我们</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="http://www.flyme.cn/" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_flyme">Flyme</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="http://bbs.meizu.com" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_bbs">魅族社区</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="https://meizu.tmall.com/" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_tmall">天猫旗舰店</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="//www.meizu.com/feedback.html" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_question">问题反馈</a>
+                </li>
+                <li class="layout-footer-interlock-item">
+                    <a href="//www.meizu.com/authorization.html" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_map">线上销售授权名单公示</a>
+                </li>
+<li class="layout-footer-interlock-item">
+          <a href="//cimg2.res.meizu.com/www/meizu/publish_license.pdf" target="_blank" class="layout-footer-interlock-link" data-mtype="wmz_public_yw_license">出版物经营许可证</a>
+        </li>
+            </ul>
+            <div class="layout-footer-copyright clearfix">
+                <span class="layout-footer-copyright-left">
+          <a class="layout-footer-copyright-link copyright-text">&copy;2018 Meizu Telecom Equipment Co., Ltd. All rights reserved.</a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备13003602号-2</a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="//store.res.meizu.com/layout/img/icp-abd57f3b39.png" target="_blank">合字B2-20170010</a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="//www2.res.meizu.com/zh_cn/images/common/com_licence.jpg" target="_blank">营业执照</a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="http://www.meizu.com/legalStatement.html"target="_blank">法律声明</a>
+          <a class="layout-footer-copyright-link">粤公网安备 44049102496009 号</a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="http://210.76.65.188/" rel="nofollow" target="_blank">
+            <i class="layout-icon layout-icon-license"></i>
+          </a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="http://210.76.65.188/webrecord/innernet/Welcome.jsp?bano=4404013010531" rel="nofollow" target="_blank">
+            <i class="layout-icon layout-icon-wel"></i>
+          </a>
+          <a class="layout-footer-copyright-link" hidefocus="true" href="https://credit.szfw.org/CX20151204012550820380.html" rel="nofollow" target="_blank">
+            <i class="layout-icon layout-icon-trust"></i>
+          </a>
+        </span>
+                <ul class="layout-footer-media clearfix">
+                    <li class="layout-footer-media-item">
+                        <a href="http://weibo.com/meizumobile" class="layout-footer-media-link">
+              <i class="layout-font layout-font-weibo"></i>
+            </a>
+                    </li>
+                    <li class="layout-footer-media-item">
+                        <a href="javascript:void(0);" class="layout-footer-media-link wechat">
+              <i class="layout-font layout-font-wechat"></i>
+              <div class="layout-footer-media-wechat-qrcode">
+                <img class="layout-footer-media-wechat-img" src="picture/wx-code_94c130c.jpg" alt="微信二维码">
+              </div>
+            </a>
+                    </li>
+                    <li class="layout-footer-media-item">
+                        <a href="https://user.qzone.qq.com/2762957059" class="layout-footer-media-link">
+              <i class="layout-font layout-font-qzone"></i>
+            </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</footer>
+
+
+<script src="static/js/layout-f5ced6cfe4.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+<script>
+
+    $(function () {
+        var cid;
+        var url=window.location.search; //获取url中"?"符后的字串
+        if(url.indexOf("?")!=-1) {
+            cid = url.substr(url.indexOf("=") + 1);
+        }
+        var str = "";
+        $.ajax({
+            url:'http://localhost:80/shangcheng/listProductByCid?cid='+cid,
+            data:'',
+            success:function (data) {
+                var products = data.listProduct;
+                for (var i = 0;i < data.listProduct.length;i++ ){
+                    str+="<li class=\"gl-item\" data-init=\"0\">\n" +
+                        "                        <div  class=\"compare-btn-list\"  id=\"J_compare\" data-mtype=\"store_list_kw_1_compare\">\n" +
+                        "                            <i  class=\"iconfont  icon-duibi compare-duibi\"></i>\n" +
+                        "                            <span>对比</span>\n" +
+                        "                        </div>\n" +
+                        "                    <a data-mtype=\"store_list_kw_1\" target=\"_blank\" href="+products[i].pid+"\"product-info2.html?pid=\" title=\"\">\n" +
+                        "                        <div class=\"gl-item-wrap\">\n" +
+                        "                            <div class=\"mod-pic\">\n" +
+                        "                                    <img width=\"220\" height=\"220\" class=\"lazy j-modProduct\" src=\"http://106.12.9.64:9999/group1/M00/00/00/wKgABFtj0o-AVhFkAAtK2LMnmvw998.png\">\n" +
+                        "                            </div>\n" +
+                        "                            \n" +
+                        "\n" +
+                        "                            <div class=\"slide-btn j-modBtns\">\n" +
+                        "                                <span data-mtype=\"store_list_kw_1_clr_l\" class=\"prev iconfont disabled\">&#xe65b;</span>\n" +
+                        "                                <span data-mtype=\"store_list_kw_1_clr_r\" class=\"next iconfont\">&#xe659;</span>\n" +
+                        "                            </div>\n" +
+                        "\n" +
+                        "\n" +
+                        "                                <h2>"+products[i].pname+"</h2>\n" +
+                        "                                <h3 class=\"red\" title=\"双摄全面屏 游戏长续航\">\n" +
+                        "                                双摄全面屏 游戏长续航\n" +
+                        "                                </h3>\n" +
+                        "                                <dd class=\"mod-price\">\n" +
+                        "                                    <span>￥</span>\n" +
+                        "                                    <span class=\"vm-price\">"+products[i].price+"</span>\n" +
+                        "                                        <span class=\"vm-start\">起</span>\n" +
+                        "                                </dd>\n" +
+                        "                        </div>\n" +
+                        "                    </a>\n" +
+                        "                </li>"
+                }
+                $('#goodsListWrap').html(str)
+            },
+            dataType:''
+        })
+    })
+
+
+    //list导航源数据
+    var MZ = {};
+    MZ.modelData={categoryMap:{"73":{"classifyTag":0,"mobileShowName":"全部商品","parentId":0,"saleCatID":73,"saleCatItemList":[{"full":"96:1,18951,14257,884,882,885,24575,23079,25300,881,17512,17513,19308,25365,19088,23213,17898,17899,19603,18070,17984,18266,24997,25017,23662,19747,24415,18932,20060,20061,22684,23743,24250,24395,24482","id":96,"showAll":1,"sub":[{"text":"魅族","value":"96:1"},{"text":"乐心","value":"96:18951"},{"text":"Beats","value":"96:14257"},{"text":"先锋","value":"96:884"},{"text":"JBL","value":"96:882"},{"text":"铁三角","value":"96:885"},{"text":"黑爵","value":"96:24575"},{"text":"力博得","value":"96:23079"},{"text":"UMBRA","value":"96:25300"},{"text":"其他品牌","value":"96:881,17512,17513,19308,25365,19088,23213,17898,17899,19603,18070,17984,18266,24997,25017,23662,19747,24415,18932,20060,20061,22684,23743,24250,24395,24482"}],"text":"品牌"}],"saleCatName":"全部商品","saleCatSpecial":{"adShowTag":0,"appBottomShowType":0,"appTopSpecialPicUrl":"https://openfile.meizu.com/group1/M00/04/41/Cgbj0Frl2PCADkIgAAB3LJkwcL0179.jpg","appTopSpecialTargetUrl":"https://detail.mall.meizu.com/item/meizu15.html","appTopSpecialType":1,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":17,"mobileShowType":0,"orderTag":1,"recommendTag":1,"saleCatAdList":[],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":73},"saleCategoryList":{"full":"73:1,4,5,9,12,13,14,15,17,18,19,21,22,23,24,25,26,28,29,30,31,33,34,40,41,42,43,45,46,48,50,52,55,56,58,60,68,72,73,74,79,80,83,84,85,86,87,88,90,91,92,93,94,96,98,100,109,110,111,112,114,116,117,129,130,131,133,134,135,136,140,141,142,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,163,164,165,166,168,169,170,171,172,173,174,175,176,177,178,179,180,181,183,184,186,187,189,190,191,192,193,194,195,196,197,198,200,201,203,204,205,206,207,208,209,210,211,212,216,217,218,219,225,226,227","sub":[{"mobileShowName":"手机","tag":0,"text":"手机","value":"76:1"},{"mobileShowName":"游戏","tag":0,"text":"游戏设备","value":"181:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"智能","tag":0,"text":"智能","value":"174:15,17,18,90,93,114,116,129,130,147"},{"mobileShowName":"影音","tag":0,"text":"数码影音","value":"231:5,28,29,68,100,169,189"},{"mobileShowName":"配件","tag":0,"text":"手机配件/移动电源","value":"186:4,21,22,23,25,26,40,42,46,83,87,91,96,109,131"},{"mobileShowName":"居家","tag":0,"text":"居家","value":"342:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"个护","tag":0,"text":"个护健康","value":"322:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"生活","tag":0,"text":"生活周边","value":"222:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,194,195"},{"mobileShowName":"食品","tag":0,"text":"食品","value":"317:198,203"},{"mobileShowName":"电器","tag":0,"text":"电器","value":"328:13,45,50,58,60,72,73,84,86,133,177,179,180,193,194,200,204,227"}],"text":"分类"}},"251":{"classifyTag":0,"mobileShowName":"测试商城","parentId":0,"saleCatID":251,"saleCatItemList":[{"full":"222:","id":222,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"测试商城","saleCatSpecial":{"adShowTag":1,"appBottomShowType":2,"appTopSpecialPicUrl":"","appTopSpecialTargetUrl":"","appTopSpecialType":0,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"https://openfile.meizu.com/group1/M00/01/5B/Cgbj0FkC5DmAVtswAAB1SPk5-xg700.jpg","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":10,"mobileShowType":2,"orderTag":1,"recommendTag":1,"saleCatAdList":[{"id":9,"linkAddress":"","name":"ceshi ","pcImgUrl":"https://openfile.meizu.com/group1/M00/01/5B/Cgbj0FkC5DmAVtswAAB1SPk5-xg700.jpg","saleCategoryId":251,"status":0,"type":0,"wordContent":""}],"saleCatBottomAppAdList":[{"bottomShowType":2,"id":416,"name":"ceshi","picUrl":"https://openfile.meizu.com/group1/M00/01/5B/Cgbj0FkC5DmAVtswAAB1SPk5-xg700.jpg","platformType":1,"saleCategoryId":251,"targetUrl":"https://store.meizu.com"}],"saleCatBottomPcAdList":[],"saleCategoryId":251},"saleCategoryList":{"full":"251:14,17,40,42,46,88","sub":[{"mobileShowName":"测试","tag":0,"text":"测试商品","value":"252:14,17,40,42,46,88"},{"mobileShowName":"测试长度换行","tag":0,"text":"测试测试长度换行长度换行","value":"253:"},{"mobileShowName":"测试长度换行","tag":0,"text":"测试长度换行测试长度换行测试长度换行","value":"254:"},{"mobileShowName":"测试长度换行","tag":0,"text":"测试长度换行测试长度换行测试长千万千万千万","value":"255:"}],"text":"分类"}},"271":{"classifyTag":0,"mobileShowName":"乐心品牌周","parentId":0,"saleCatID":271,"saleCatItemList":[{"full":"221:18951,18932","id":221,"showAll":0,"sub":[{"text":"品牌","value":"221:18951,18932"}],"text":"品牌"}],"saleCatName":"乐心品牌周","saleCatSpecial":{"adShowTag":1,"appBottomShowType":0,"appTopSpecialPicUrl":"https://openfile.meizu.com/group1/M00/03/92/Cgbj0Fq01sGAY-i4AAJWEU32amQ325.jpg","appTopSpecialTargetUrl":"https://hd.meizu.com/activity/springtravel.html?click=store_index_ba_7","appTopSpecialType":1,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"广东乐心医疗电子股份有限公司成立于2002年[1]，乐心lifesense，医疗健康电子产品与医疗健康平台技术提供商，总部位于广东中山；中国无线健康产品的创新实践者，其产品主要包括GPRS远程血压计、智能蓝牙健康秤、运动智能手环、儿童身高测量仪等。经过十余年的耕耘，乐心累计为全球超过5000万以上的中高端家庭和个人提供技术领先、品质卓越的健康电子产品，是欧美日韩中高端家庭健康电子产品的主要供应商。\"]","h5LogoDescPic":"https://openfile.meizu.com/group1/M00/03/5A/Cgbj0Vqw04CAWsaZAAWL1dgljVE661.png","h5LogoDescTitle":"乐心","h5LogoName":"乐心","h5LogoPic":"https://openfile.meizu.com/group1/M00/03/92/Cgbj0Fq01sGAY-i4AAJWEU32amQ325.jpg","h5LogoSlogan":"健康","id":12,"mobileShowType":1,"orderTag":1,"recommendTag":1,"saleCatAdList":[{"id":10,"linkAddress":"https://hd.meizu.com/activity/springtravel.html?click=store_index_ba_7","name":"品牌","pcImgUrl":"https://openfile.meizu.com/group1/M00/03/92/Cgbj0Fq01sGAY-i4AAJWEU32amQ325.jpg","saleCategoryId":271,"status":0,"type":0,"wordContent":""}],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":271},"saleCategoryList":{"full":"271:17,30,114","sub":[],"text":"分类"}},"274":{"classifyTag":0,"mobileShowName":"小程序","parentId":0,"saleCatID":274,"saleCatItemList":[{"full":"223:24395","id":223,"showAll":1,"sub":[{"text":"福满园","value":"223:24395"}],"text":"品牌"}],"saleCatName":"小程序商家品牌页","saleCategoryList":{"full":"274:4,5,9,12,13,14,15,17,18,19,21,22,23,24,25,26,28,29,30,31,33,34,40,41,42,43,45,46,48,50,52,55,56,58,60,68,72,73,74,79,80,83,84,85,86,87,88,90,91,92,93,94,96,98,100,109,110,111,112,114,116,117,129,130,131,133,134,135,136,140,141,142,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,163,164,165,166,168,169,170,171,172,173,174,175,176,177,178,179,180,181,183,184,186,187,189,190","sub":[{"mobileShowName":"小程序1","tag":0,"text":"小程序商家—福满园","value":"276:4,5,9,12,13,14,15,17,18,19,21,22,23,24,25,26,28,29,30,31,33,34,40,41,42,43,45,46,48,50,52,55,56,58,60,68,72,73,74,79,80,83,84,85,86,87,88,90,91,92,93,94,96,98,100,109,110,111,112,114,116,117,129,130,131,133,134,135,136,140,141,142,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,163,164,165,166,168,169,170,171,172,173,174,175,176,177,178,179,180,181,183,184,186,187,189,190"},{"mobileShowName":"活动","tag":0,"text":"活动","value":"277:17,141"}],"text":"分类"}},"360":{"classifyTag":0,"mobileShowName":"乐心品牌页","parentId":0,"saleCatID":360,"saleCatItemList":[{"full":"238:18951","id":238,"showAll":1,"sub":[{"text":"乐心","value":"238:18951"}],"text":"品牌"}],"saleCatName":"乐心品牌页","saleCatSpecial":{"adShowTag":1,"appBottomShowType":0,"appTopSpecialPicUrl":"","appTopSpecialTargetUrl":"","appTopSpecialType":0,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"https://openfile.meizu.com/group1/M00/05/9E/Cgbj0FtRqdSAO1-3AAIFFHDvGqQ154.jpg","h5LogoDescContentJson":"[\"广东乐心医疗电子股份有限公司成立于2002年[1]，乐心lifesense，医疗健康电子产品与医疗健康平台技术提供商，总部位于广东中山；中国无线健康产品的创新实践者，其产品主要包括GPRS远程血压计、智能蓝牙健康秤、运动智能手环、儿童身高测量仪等。经过十余年的耕耘，乐心累计为全球超过5000万以上的中高端家庭和个人提供技术领先、品质卓越的健康电子产品，是欧美日韩中高端家庭健康电子产品的主要供应商。\"]","h5LogoDescPic":"https://openfile.meizu.com/group1/M00/05/2D/Cgbj0FswuryAS6BCAAIsFQsylXo088.jpg","h5LogoDescTitle":"乐心","h5LogoName":"乐心","h5LogoPic":"https://openfile.meizu.com/group1/M00/04/98/Cgbj0FsU3M-AeW1XAAPa6cuO8kE423.jpg","h5LogoSlogan":"健康","id":23,"mobileShowType":2,"orderTag":1,"recommendTag":1,"saleCatAdList":[{"id":12,"linkAddress":"","name":"品牌","pcImgUrl":"https://openfile.meizu.com/group1/M00/00/BD/CnQOjVg37FCAZxwGAAKLFN54E_s578.jpg","saleCategoryId":360,"status":0,"type":0,"wordContent":""}],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":360},"saleCategoryList":{"full":"360:17,30,114","sub":[],"text":"分类"}},"252":{"classifyTag":0,"mobileShowName":"测试","parentId":251,"saleCatID":252,"saleCatItemList":[{"full":"220:","id":220,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"测试商品","saleCatSpecial":{"adShowTag":0,"appBottomShowType":0,"appTopSpecialPicUrl":"","appTopSpecialTargetUrl":"","appTopSpecialType":0,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":22,"mobileShowType":0,"orderTag":1,"recommendTag":1,"saleCatAdList":[],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":252},"saleCategoryList":{"full":"252:14,17,40,42,46,88","sub":[],"text":"分类"}},"276":{"classifyTag":0,"mobileShowName":"小程序1","parentId":274,"saleCatID":276,"saleCatItemList":[{"full":"226:24395,26477,23743,884,22678,28244,26900,26448","id":226,"showAll":1,"sub":[{"text":"福满园","value":"226:24395"},{"text":"Ymilomo/怡眠诺梦","value":"226:26477"},{"text":"飞科","value":"226:23743"},{"text":"先锋","value":"226:884"},{"text":"联想","value":"226:22678"},{"text":"硕美科（SOMIC）","value":"226:28244"},{"text":"JORDAN&JUDY/佐敦朱迪","value":"226:26900"},{"text":"慈慈","value":"226:26448"}],"text":"品牌"}],"saleCatName":"小程序商家—福满园","saleCategoryList":{"full":"276:4,5,9,12,13,14,15,17,18,19,21,22,23,24,25,26,28,29,30,31,33,34,40,41,42,43,45,46,48,50,52,55,56,58,60,68,72,73,74,79,80,83,84,85,86,87,88,90,91,92,93,94,96,98,100,109,110,111,112,114,116,117,129,130,131,133,134,135,136,140,141,142,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,163,164,165,166,168,169,170,171,172,173,174,175,176,177,178,179,180,181,183,184,186,187,189,190","sub":[],"text":"分类"}},"76":{"classifyTag":0,"mobileShowName":"手机","parentId":73,"saleCatID":76,"saleCatItemList":[{"full":"80:27057,27058,27059,23954,23955,24243,23669,26153,26604,28004,24475,26650,26651,24634,22463","id":80,"showAll":1,"sub":[{"text":"魅族品牌","value":"80:27057,27058,27059,23954,23955"},{"text":"魅蓝品牌","value":"80:24243,23669,26153,26604,28004,24475,26650,26651,24634,22463"}],"text":"品牌"},{"full":"203:18408,22,23,27122,27123","id":203,"showAll":1,"sub":[{"text":"5.2英寸","value":"203:18408"},{"text":"5.5英寸","value":"203:22"},{"text":"5.7英寸","value":"203:23"},{"text":"5.46英寸","value":"203:27122"},{"text":"5.95英寸","value":"203:27123"}],"text":"屏幕尺寸"},{"full":"219:36,24245,21211,37,21089,23963,38,23961,22234,23962,23964","id":219,"showAll":1,"sub":[{"text":"16GB","value":"219:36,24245"},{"text":"32GB","value":"219:21211,37,21089"},{"text":"64GB","value":"219:23963,38,23961"},{"text":"128GB","value":"219:22234,23962,23964"}],"text":"机身内存"}],"saleCatName":"手机","saleCatSpecial":{"adShowTag":0,"appBottomShowType":0,"appTopSpecialPicUrl":"https://openfile.meizu.com/group1/M00/05/C2/Cgbj0VtgAYmAJ_XsAACCqIzlTmk710.jpg","appTopSpecialTargetUrl":"https://detail.meizu.com/item/meilans6.html","appTopSpecialType":1,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":11,"mobileShowType":0,"orderTag":1,"recommendTag":1,"saleCatAdList":[],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":76},"saleCategoryList":{"full":"76:1","sub":[],"text":"分类"}},"253":{"classifyTag":0,"mobileShowName":"测试长度换行","parentId":251,"saleCatID":253,"saleCatItemList":[],"saleCatName":"测试测试长度换行长度换行","saleCategoryList":{"full":"253:","sub":[],"text":"分类"}},"277":{"classifyTag":0,"mobileShowName":"活动","parentId":274,"saleCatID":277,"saleCatItemList":[{"full":"227:","id":227,"showAll":1,"sub":[],"text":"品牌"},{"full":"228:","id":228,"showAll":1,"sub":[],"text":"型号"},{"full":"229:25006,24396","id":229,"showAll":1,"sub":[{"text":"颗粒按摩枕","value":"229:25006,24396"}],"text":"品名"}],"saleCatName":"活动","saleCategoryList":{"full":"277:17,141","sub":[],"text":"分类"}},"181":{"classifyTag":0,"mobileShowName":"游戏","parentId":73,"saleCatID":181,"saleCatItemList":[{"full":"168:17898,17899,22684,19088,24575","id":168,"showAll":1,"sub":[{"text":"新游","value":"168:17898,17899"},{"text":"雷柏","value":"168:22684"},{"text":"飞智","value":"168:19088"},{"text":"黑爵","value":"168:24575"}],"text":"品牌"}],"saleCatName":"游戏设备","saleCatSpecial":{"adShowTag":0,"appBottomShowType":0,"appTopSpecialPicUrl":"","appTopSpecialTargetUrl":"","appTopSpecialType":0,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":16,"mobileShowType":0,"orderTag":1,"recommendTag":1,"saleCatAdList":[],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":181},"saleCategoryList":{"full":"181:79,80,85,111,112,145,146,190,191","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":0,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":0,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":0,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":0,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":0,"text":"散热器","value":"284:190"}],"text":"分类"}},"174":{"classifyTag":0,"mobileShowName":"智能","parentId":73,"saleCatID":174,"saleCatItemList":[{"full":"165:1,18951,18070,18518,25017","id":165,"showAll":1,"sub":[{"text":"魅族","value":"165:1"},{"text":"乐心","value":"165:18951"},{"text":"纽曼","value":"165:18070"},{"text":"暴风魔镜","value":"165:18518"},{"text":"博思尼","value":"165:25017"}],"text":"品牌"}],"saleCatName":"智能","saleCatSpecial":{"adShowTag":0,"appBottomShowType":0,"appTopSpecialPicUrl":"https://openfile.meizu.com/group1/M00/03/B2/Cgbj0Vq9oC-ANSxtAAEavStu5IU032.jpg","appTopSpecialTargetUrl":"https://detail.meizu.com/item/qh5.html","appTopSpecialType":0,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":14,"mobileShowType":0,"orderTag":1,"recommendTag":1,"saleCatAdList":[],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":174},"saleCategoryList":{"full":"174:15,17,18,90,93,114,116,129,130,147","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"178:17,18,90,93,114,129,130"},{"mobileShowName":"智能手环","tag":0,"text":"智能手环","value":"175:17,116"},{"mobileShowName":"智能眼镜","tag":0,"text":"智能眼镜","value":"177:18"},{"mobileShowName":"智能出行","tag":0,"text":"智能出行","value":"321:15,90,93,114,129,130"}],"text":"分类"}},"254":{"classifyTag":0,"mobileShowName":"测试长度换行","parentId":251,"saleCatID":254,"saleCatItemList":[],"saleCatName":"测试长度换行测试长度换行测试长度换行","saleCategoryList":{"full":"254:","sub":[],"text":"分类"}},"255":{"classifyTag":0,"mobileShowName":"测试长度换行","parentId":251,"saleCatID":255,"saleCatItemList":[],"saleCatName":"测试长度换行测试长度换行测试长千万千万千万","saleCategoryList":{"full":"255:","sub":[],"text":"分类"}},"231":{"classifyTag":0,"mobileShowName":"影音","parentId":73,"saleCatID":231,"saleCatItemList":[{"full":"192:1,24247,885,882,14257,884,25365,25761,19308,17512,25775,883,22730,24575,25763,24415,18070","id":192,"showAll":1,"sub":[{"text":"魅族","value":"192:1"},{"text":"魅蓝","value":"192:24247"},{"text":"铁三角","value":"192:885"},{"text":"JBL","value":"192:882"},{"text":"Beats","value":"192:14257"},{"text":"先锋","value":"192:884"},{"text":"捷波朗","value":"192:25365"},{"text":"JVC","value":"192:25761"},{"text":"索尼","value":"192:19308"},{"text":"骷髅头","value":"192:17512"},{"text":"其他","value":"192:25775,883,22730,24575,25763,24415,18070"}],"text":"品牌"}],"saleCatName":"数码影音","saleCategoryList":{"full":"231:5,28,29,68,100,169,189","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"232:5,28,29,68,100,169"},{"mobileShowName":"耳机","tag":0,"text":"耳机","value":"233:5"},{"mobileShowName":"音箱","tag":0,"text":"音箱","value":"234:28,29"},{"mobileShowName":"播放器","tag":0,"text":"播放器","value":"269:68"},{"mobileShowName":"其他","tag":0,"text":"其他","value":"272:169"}],"text":"分类"}},"186":{"classifyTag":0,"mobileShowName":"配件","parentId":73,"saleCatID":186,"saleCatItemList":[{"full":"209:1,19747,19603","id":209,"showAll":1,"sub":[{"text":"魅族","value":"209:1"},{"text":"ORICO","value":"209:19747"},{"text":"罗马仕","value":"209:19603"}],"text":"品牌"}],"saleCatName":"手机配件/移动电源","saleCategoryList":{"full":"186:4,21,22,23,25,26,40,42,46,83,87,91,96,109,131","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":0,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":0,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":0,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":0,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":0,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":0,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":0,"text":"电话卡","value":"336:25"}],"text":"分类"}},"342":{"classifyTag":0,"mobileShowName":"居家","parentId":73,"saleCatID":342,"saleCatItemList":[],"saleCatName":"居家","saleCategoryList":{"full":"342:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":0,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":0,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":0,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":0,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":0,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"322":{"classifyTag":0,"mobileShowName":"个护","parentId":73,"saleCatID":322,"saleCatItemList":[],"saleCatName":"个护健康","saleCategoryList":{"full":"322:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":0,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":0,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":0,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":0,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":0,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"222":{"classifyTag":0,"mobileShowName":"生活","parentId":73,"saleCatID":222,"saleCatItemList":[{"full":"190:24247,23079,24395,24482,25300,17513,25678,23743","id":190,"showAll":1,"sub":[{"text":"魅蓝","value":"190:24247"},{"text":"力博得","value":"190:23079"},{"text":"福满园","value":"190:24395"},{"text":"Lena","value":"190:24482"},{"text":"UMBRA","value":"190:25300"},{"text":"飞利浦","value":"190:17513"},{"text":"Corkcicle","value":"190:25678"},{"text":"飞科","value":"190:23743"}],"text":"品牌"}],"saleCatName":"生活周边","saleCategoryList":{"full":"222:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,194,195","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":0,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":0,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":0,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":0,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":0,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":0,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":0,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"317":{"classifyTag":0,"mobileShowName":"食品","parentId":73,"saleCatID":317,"saleCatItemList":[],"saleCatName":"食品","saleCategoryList":{"full":"317:198,203","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"318:203"},{"mobileShowName":"零食搭档","tag":0,"text":"零食搭档","value":"320:203"}],"text":"分类"}},"328":{"classifyTag":0,"mobileShowName":"电器","parentId":73,"saleCatID":328,"saleCatItemList":[],"saleCatName":"电器","saleCategoryList":{"full":"328:13,45,50,58,60,72,73,84,86,133,177,179,180,193,194,200,204,227","sub":[{"mobileShowName":"全部","tag":0,"text":"全部","value":"331:45,50,58,60,84,86,133,177,179,193,194,200,204,227"},{"mobileShowName":"厨房电器","tag":0,"text":"厨房电器","value":"332:45,50,58,193,194,204,227"},{"mobileShowName":"小家电","tag":0,"text":"小家电","value":"349:13,72,73,84,86,133,177,179,200"}],"text":"分类"}},"323":{"classifyTag":1,"mobileShowName":"全部","parentId":322,"saleCatID":323,"saleCatItemList":[],"saleCatName":"全部","saleCategoryList":{"full":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":1,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":1,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":1,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":1,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":1,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"331":{"classifyTag":1,"mobileShowName":"全部","parentId":328,"saleCatID":331,"saleCatItemList":[],"saleCatName":"全部","saleCategoryList":{"full":"331:45,50,58,60,84,86,133,177,179,193,194,200,204,227","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"331:45,50,58,60,84,86,133,177,179,193,194,200,204,227"},{"mobileShowName":"厨房电器","tag":1,"text":"厨房电器","value":"332:45,50,58,193,194,204,227"},{"mobileShowName":"小家电","tag":1,"text":"小家电","value":"349:13,72,73,84,86,133,177,179,200"}],"text":"分类"}},"348":{"classifyTag":1,"mobileShowName":"全部","parentId":342,"saleCatID":348,"saleCatItemList":[],"saleCatName":"全部","saleCategoryList":{"full":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":1,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":1,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":1,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":1,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":1,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"223":{"classifyTag":1,"mobileShowName":"全部","parentId":222,"saleCatID":223,"saleCatItemList":[{"full":"190:24247,24395,25300,25678,23743","id":190,"showAll":1,"sub":[{"text":"魅蓝","value":"190:24247"},{"text":"福满园","value":"190:24395"},{"text":"UMBRA","value":"190:25300"},{"text":"Corkcicle","value":"190:25678"},{"text":"飞科","value":"190:23743"}],"text":"品牌"}],"saleCatName":"全部","saleCategoryList":{"full":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"241":{"classifyTag":1,"mobileShowName":"全部","parentId":186,"saleCatID":241,"saleCatItemList":[{"full":"209:1,19747,19603","id":209,"showAll":1,"sub":[{"text":"魅族","value":"209:1"},{"text":"ORICO","value":"209:19747"},{"text":"罗马仕","value":"209:19603"}],"text":"品牌"}],"saleCatName":"全部","saleCategoryList":{"full":"241:21,22,23,26,83,87,109,131","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"232":{"classifyTag":1,"mobileShowName":"全部","parentId":231,"saleCatID":232,"saleCatItemList":[{"full":"192:1,24247,885,882,14257,884,25365,25761,19308,17512,25775,883,22730,24575,25763,24415,18070","id":192,"showAll":1,"sub":[{"text":"魅族","value":"192:1"},{"text":"魅蓝","value":"192:24247"},{"text":"铁三角","value":"192:885"},{"text":"JBL","value":"192:882"},{"text":"Beats","value":"192:14257"},{"text":"先锋","value":"192:884"},{"text":"捷波朗","value":"192:25365"},{"text":"JVC","value":"192:25761"},{"text":"索尼","value":"192:19308"},{"text":"骷髅头","value":"192:17512"},{"text":"其他","value":"192:25775,883,22730,24575,25763,24415,18070"}],"text":"品牌"}],"saleCatName":"全部","saleCategoryList":{"full":"232:5,28,29,68,100,169","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"232:5,28,29,68,100,169"},{"mobileShowName":"耳机","tag":1,"text":"耳机","value":"233:5"},{"mobileShowName":"音箱","tag":1,"text":"音箱","value":"234:28,29"},{"mobileShowName":"播放器","tag":1,"text":"播放器","value":"269:68"},{"mobileShowName":"其他","tag":1,"text":"其他","value":"272:169"}],"text":"分类"}},"185":{"classifyTag":1,"mobileShowName":"全部","parentId":181,"saleCatID":185,"saleCatItemList":[{"full":"169:","id":169,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"全部","saleCategoryList":{"full":"185:79,80,85,111,112,145,146,190,191","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":1,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":1,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":1,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":1,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":1,"text":"散热器","value":"284:190"}],"text":"分类"}},"318":{"classifyTag":1,"mobileShowName":"全部","parentId":317,"saleCatID":318,"saleCatItemList":[],"saleCatName":"全部","saleCategoryList":{"full":"318:203","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"318:203"},{"mobileShowName":"零食搭档","tag":1,"text":"零食搭档","value":"320:203"}],"text":"分类"}},"178":{"classifyTag":1,"mobileShowName":"全部","parentId":174,"saleCatID":178,"saleCatItemList":[{"full":"166:","id":166,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"全部","saleCategoryList":{"full":"178:17,18,90,93,114,129,130","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"178:17,18,90,93,114,129,130"},{"mobileShowName":"智能手环","tag":1,"text":"智能手环","value":"175:17,116"},{"mobileShowName":"智能眼镜","tag":1,"text":"智能眼镜","value":"177:18"},{"mobileShowName":"智能出行","tag":1,"text":"智能出行","value":"321:15,90,93,114,129,130"}],"text":"分类"}},"175":{"classifyTag":1,"mobileShowName":"智能手环","parentId":174,"saleCatID":175,"saleCatItemList":[{"full":"160:18951,1","id":160,"showAll":1,"sub":[{"text":"乐心","value":"160:18951"},{"text":"魅族","value":"160:1"}],"text":"品牌"},{"full":"161:20696,20371,22377,21049,18920,20493,531,22376","id":161,"showAll":1,"sub":[{"text":"安卓","value":"161:20696,20371,22377,21049"},{"text":"iOS ","value":"161:18920,20493,531,20371,22376,21049"}],"text":"兼容平台"}],"saleCatName":"智能手环","saleCatSpecial":{"adShowTag":0,"appBottomShowType":0,"appTopSpecialPicUrl":"","appTopSpecialTargetUrl":"","appTopSpecialType":0,"bottomShowType":0,"catItemHideTag":0,"filterTag":1,"h5LogoActBanner":"","h5LogoDescContentJson":"[\"\"]","h5LogoDescPic":"","h5LogoDescTitle":"","h5LogoName":"","h5LogoPic":"","h5LogoSlogan":"","id":15,"mobileShowType":0,"orderTag":1,"recommendTag":1,"saleCatAdList":[],"saleCatBottomAppAdList":[],"saleCatBottomPcAdList":[],"saleCategoryId":175},"saleCategoryList":{"full":"175:17,116","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"178:17,18,90,93,114,129,130"},{"mobileShowName":"智能手环","tag":1,"text":"智能手环","value":"175:17,116"},{"mobileShowName":"智能眼镜","tag":1,"text":"智能眼镜","value":"177:18"},{"mobileShowName":"智能出行","tag":1,"text":"智能出行","value":"321:15,90,93,114,129,130"}],"text":"分类"}},"327":{"classifyTag":1,"mobileShowName":"体脂称","parentId":322,"saleCatID":327,"saleCatItemList":[],"saleCatName":"体脂称","saleCategoryList":{"full":"327:30","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":1,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":1,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":1,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":1,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":1,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"187":{"classifyTag":1,"mobileShowName":"移动电源","parentId":186,"saleCatID":187,"saleCatItemList":[{"full":"209:1,19603","id":209,"showAll":1,"sub":[{"text":"魅族","value":"209:1"},{"text":"罗马仕","value":"209:19603"}],"text":"品牌"}],"saleCatName":"移动电源","saleCategoryList":{"full":"187:26","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"182":{"classifyTag":1,"mobileShowName":"游戏手柄","parentId":181,"saleCatID":182,"saleCatItemList":[{"full":"170:17898,17899,19088","id":170,"showAll":1,"sub":[{"text":"新游","value":"170:17898,17899"},{"text":"飞智","value":"170:19088"}],"text":"品牌"},{"full":"176:17895,17905,17894","id":176,"showAll":1,"sub":[{"text":"无线","value":"176:17895,17905,17894"}],"text":"有无线"}],"saleCatName":"游戏手柄","saleCategoryList":{"full":"182:80,85","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":1,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":1,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":1,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":1,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":1,"text":"散热器","value":"284:190"}],"text":"分类"}},"332":{"classifyTag":1,"mobileShowName":"厨房电器","parentId":328,"saleCatID":332,"saleCatItemList":[],"saleCatName":"厨房电器","saleCategoryList":{"full":"332:45,50,58,193,194,204,227","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"331:45,50,58,60,84,86,133,177,179,193,194,200,204,227"},{"mobileShowName":"厨房电器","tag":1,"text":"厨房电器","value":"332:45,50,58,193,194,204,227"},{"mobileShowName":"小家电","tag":1,"text":"小家电","value":"349:13,72,73,84,86,133,177,179,200"}],"text":"分类"}},"224":{"classifyTag":1,"mobileShowName":"包","parentId":222,"saleCatID":224,"saleCatItemList":[{"full":"190:24247","id":190,"showAll":1,"sub":[{"text":"魅蓝","value":"190:24247"}],"text":"品牌"}],"saleCatName":"包","saleCategoryList":{"full":"224:48,92,140","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"233":{"classifyTag":1,"mobileShowName":"耳机","parentId":231,"saleCatID":233,"saleCatItemList":[{"full":"193:1,24247,882,14257,885,884,17512,19410,883,17513,22730,22738,19308,22845,9159","id":193,"showAll":1,"sub":[{"text":"魅族","value":"193:1"},{"text":"魅蓝","value":"193:24247"},{"text":"JBL","value":"193:882"},{"text":"Beats","value":"193:14257"},{"text":"铁三角","value":"193:885"},{"text":"先锋","value":"193:884"},{"text":"骷髅头","value":"193:17512"},{"text":"更多","value":"193:19410,883,17513,22730,22738,19308,22845,9159"}],"text":"品牌"},{"full":"194:18938,522,23232,523,22755,22756,536,521,18947,22861","id":194,"showAll":1,"sub":[{"text":"入耳式","value":"194:18938,522,23232"},{"text":"头戴式","value":"194:523,22755,22756"},{"text":"挂耳式","value":"194:536,23232"},{"text":"耳塞式","value":"194:521"},{"text":"其他","value":"194:18947,22861"}],"text":"佩戴方式"},{"full":"196:19200,533","id":196,"showAll":1,"sub":[{"text":"有线耳机","value":"196:19200"},{"text":"蓝牙耳机","value":"196:533"}],"text":"功能用途"},{"full":"195:527,528","id":195,"showAll":1,"sub":[{"text":"带麦","value":"195:527"},{"text":"不带麦","value":"195:528"}],"text":"有无麦克风"}],"saleCatName":"耳机","saleCategoryList":{"full":"233:5","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"232:5,28,29,68,100,169"},{"mobileShowName":"耳机","tag":1,"text":"耳机","value":"233:5"},{"mobileShowName":"音箱","tag":1,"text":"音箱","value":"234:28,29"},{"mobileShowName":"播放器","tag":1,"text":"播放器","value":"269:68"},{"mobileShowName":"其他","tag":1,"text":"其他","value":"272:169"}],"text":"分类"}},"345":{"classifyTag":1,"mobileShowName":"生活用品","parentId":342,"saleCatID":345,"saleCatItemList":[],"saleCatName":"生活用品","saleCategoryList":{"full":"345:168,174,175,184,187,210,211","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":1,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":1,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":1,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":1,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":1,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"324":{"classifyTag":1,"mobileShowName":"面部美容","parentId":322,"saleCatID":324,"saleCatItemList":[],"saleCatName":"面部美容","saleCategoryList":{"full":"324:98,134,157,161,192,216","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":1,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":1,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":1,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":1,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":1,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"320":{"classifyTag":1,"mobileShowName":"零食搭档","parentId":317,"saleCatID":320,"saleCatItemList":[],"saleCatName":"零食搭档","saleCategoryList":{"full":"320:203","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"318:203"},{"mobileShowName":"零食搭档","tag":1,"text":"零食搭档","value":"320:203"}],"text":"分类"}},"344":{"classifyTag":1,"mobileShowName":"清洁用品","parentId":342,"saleCatID":344,"saleCatItemList":[],"saleCatName":"清洁用品","saleCategoryList":{"full":"344:178,181,208,209","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":1,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":1,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":1,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":1,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":1,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"234":{"classifyTag":1,"mobileShowName":"音箱","parentId":231,"saleCatID":234,"saleCatItemList":[{"full":"197:1,882,14257","id":197,"showAll":1,"sub":[{"text":"魅族","value":"197:1"},{"text":"JBL","value":"197:882"},{"text":"Beats","value":"197:14257"}],"text":"品牌"},{"full":"199:1589,23163,22765,22766,22767,23165,7837","id":199,"showAll":1,"sub":[{"text":"蓝牙","value":"199:1589,23163,22765,22766,22767"},{"text":"WIFI","value":"199:22765,22766"},{"text":"音频接口","value":"199:23163,23165,22767"},{"text":"其他","value":"199:7837,22766"}],"text":"连接方式"},{"full":"198:22142,22141","id":198,"showAll":1,"sub":[{"text":"不支持","value":"198:22142"},{"text":"支持","value":"198:22141"}],"text":"是否支持蓝牙"}],"saleCatName":"音箱","saleCategoryList":{"full":"234:28,29","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"232:5,28,29,68,100,169"},{"mobileShowName":"耳机","tag":1,"text":"耳机","value":"233:5"},{"mobileShowName":"音箱","tag":1,"text":"音箱","value":"234:28,29"},{"mobileShowName":"播放器","tag":1,"text":"播放器","value":"269:68"},{"mobileShowName":"其他","tag":1,"text":"其他","value":"272:169"}],"text":"分类"}},"237":{"classifyTag":1,"mobileShowName":"壳膜套","parentId":186,"saleCatID":237,"saleCatItemList":[{"full":"205:23991,23992,21897,22229,18686,20099,24839,22228,20790,24374,20384,23685,23177,22396,21856","id":205,"showAll":1,"sub":[{"text":"魅族系列","value":"205:23991,23992,21897,22229,18686,20099"},{"text":"魅蓝系列","value":"205:24839,22228,20790,24374,20384,23685,23177,22396,21856"}],"text":"适用机型"}],"saleCatName":"壳膜套","saleCategoryList":{"full":"237:21","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"183":{"classifyTag":1,"mobileShowName":"游戏键鼠","parentId":181,"saleCatID":183,"saleCatItemList":[{"full":"174:22684,24575","id":174,"showAll":1,"sub":[{"text":"雷柏","value":"174:22684"},{"text":"黑爵","value":"174:24575"}],"text":"品牌"}],"saleCatName":"游戏键鼠","saleCategoryList":{"full":"183:111,112,145","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":1,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":1,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":1,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":1,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":1,"text":"散热器","value":"284:190"}],"text":"分类"}},"349":{"classifyTag":1,"mobileShowName":"小家电","parentId":328,"saleCatID":349,"saleCatItemList":[],"saleCatName":"小家电","saleCategoryList":{"full":"349:13,72,73,84,86,133,177,179,200","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"331:45,50,58,60,84,86,133,177,179,193,194,200,204,227"},{"mobileShowName":"厨房电器","tag":1,"text":"厨房电器","value":"332:45,50,58,193,194,204,227"},{"mobileShowName":"小家电","tag":1,"text":"小家电","value":"349:13,72,73,84,86,133,177,179,200"}],"text":"分类"}},"325":{"classifyTag":1,"mobileShowName":"美容美发","parentId":322,"saleCatID":325,"saleCatItemList":[],"saleCatName":"美容美发","saleCategoryList":{"full":"325:142","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":1,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":1,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":1,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":1,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":1,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"343":{"classifyTag":1,"mobileShowName":"厨房用品","parentId":342,"saleCatID":343,"saleCatItemList":[],"saleCatName":"厨房用品","saleCategoryList":{"full":"343:176,207","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":1,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":1,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":1,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":1,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":1,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"285":{"classifyTag":1,"mobileShowName":"眼镜","parentId":222,"saleCatID":285,"saleCatItemList":[{"full":"190:","id":190,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"眼镜","saleCategoryList":{"full":"285:195","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"177":{"classifyTag":1,"mobileShowName":"智能眼镜","parentId":174,"saleCatID":177,"saleCatItemList":[{"full":"164:18518,18070,25017","id":164,"showAll":1,"sub":[{"text":"暴风魔镜","value":"164:18518"},{"text":"纽曼","value":"164:18070"},{"text":"博思尼","value":"164:25017"}],"text":"品牌"}],"saleCatName":"智能眼镜","saleCategoryList":{"full":"177:18","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"178:17,18,90,93,114,129,130"},{"mobileShowName":"智能手环","tag":1,"text":"智能手环","value":"175:17,116"},{"mobileShowName":"智能眼镜","tag":1,"text":"智能眼镜","value":"177:18"},{"mobileShowName":"智能出行","tag":1,"text":"智能出行","value":"321:15,90,93,114,129,130"}],"text":"分类"}},"239":{"classifyTag":1,"mobileShowName":"数据线","parentId":186,"saleCatID":239,"saleCatItemList":[{"full":"206:1600,867","id":206,"showAll":1,"sub":[{"text":"Type-C","value":"206:1600"},{"text":"Micro USB","value":"206:867"}],"text":"接口类型"},{"full":"207:20259,1656,22448,1659,1657","id":207,"showAll":1,"sub":[{"text":"转接头","value":"207:20259"},{"text":"1米","value":"207:1656,22448"},{"text":"1米以上","value":"207:1659,1657"}],"text":"缆线长度"}],"saleCatName":"数据线","saleCategoryList":{"full":"239:22","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"269":{"classifyTag":1,"mobileShowName":"播放器","parentId":231,"saleCatID":269,"saleCatItemList":[{"full":"192:885,19308","id":192,"showAll":1,"sub":[{"text":"铁三角","value":"192:885"},{"text":"索尼","value":"192:19308"}],"text":"品牌"}],"saleCatName":"播放器","saleCategoryList":{"full":"269:68","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"232:5,28,29,68,100,169"},{"mobileShowName":"耳机","tag":1,"text":"耳机","value":"233:5"},{"mobileShowName":"音箱","tag":1,"text":"音箱","value":"234:28,29"},{"mobileShowName":"播放器","tag":1,"text":"播放器","value":"269:68"},{"mobileShowName":"其他","tag":1,"text":"其他","value":"272:169"}],"text":"分类"}},"262":{"classifyTag":1,"mobileShowName":"AR游戏枪","parentId":181,"saleCatID":262,"saleCatItemList":[{"full":"168:","id":168,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"AR游戏枪","saleCategoryList":{"full":"262:146","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":1,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":1,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":1,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":1,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":1,"text":"散热器","value":"284:190"}],"text":"分类"}},"321":{"classifyTag":1,"mobileShowName":"智能出行","parentId":174,"saleCatID":321,"saleCatItemList":[{"full":"165:1,18951,18070","id":165,"showAll":1,"sub":[{"text":"魅族","value":"165:1"},{"text":"乐心","value":"165:18951"},{"text":"纽曼","value":"165:18070"}],"text":"品牌"}],"saleCatName":"智能出行","saleCategoryList":{"full":"321:15,90,93,114,129,130","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"178:17,18,90,93,114,129,130"},{"mobileShowName":"智能手环","tag":1,"text":"智能手环","value":"175:17,116"},{"mobileShowName":"智能眼镜","tag":1,"text":"智能眼镜","value":"177:18"},{"mobileShowName":"智能出行","tag":1,"text":"智能出行","value":"321:15,90,93,114,129,130"}],"text":"分类"}},"346":{"classifyTag":1,"mobileShowName":"收纳用品","parentId":342,"saleCatID":346,"saleCatItemList":[],"saleCatName":"收纳用品","saleCategoryList":{"full":"346:170,206","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":1,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":1,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":1,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":1,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":1,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"240":{"classifyTag":1,"mobileShowName":"电源适配器","parentId":186,"saleCatID":240,"saleCatItemList":[{"full":"209:1,19747,19603","id":209,"showAll":1,"sub":[{"text":"魅族","value":"209:1"},{"text":"ORICO","value":"209:19747"},{"text":"罗马仕","value":"209:19603"}],"text":"品牌"}],"saleCatName":"电源适配器","saleCategoryList":{"full":"240:23","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"326":{"classifyTag":1,"mobileShowName":"口腔护理","parentId":322,"saleCatID":326,"saleCatItemList":[],"saleCatName":"口腔护理","saleCategoryList":{"full":"326:110,148,171,218,219","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":1,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":1,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":1,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":1,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":1,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"272":{"classifyTag":1,"mobileShowName":"其他","parentId":231,"saleCatID":272,"saleCatItemList":[{"full":"192:1","id":192,"showAll":1,"sub":[{"text":"魅族","value":"192:1"}],"text":"品牌"}],"saleCatName":"其他","saleCategoryList":{"full":"272:169","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"232:5,28,29,68,100,169"},{"mobileShowName":"耳机","tag":1,"text":"耳机","value":"233:5"},{"mobileShowName":"音箱","tag":1,"text":"音箱","value":"234:28,29"},{"mobileShowName":"播放器","tag":1,"text":"播放器","value":"269:68"},{"mobileShowName":"其他","tag":1,"text":"其他","value":"272:169"}],"text":"分类"}},"283":{"classifyTag":1,"mobileShowName":"游戏按键","parentId":181,"saleCatID":283,"saleCatItemList":[{"full":"168:17899","id":168,"showAll":1,"sub":[{"text":"新游","value":"168:17899"}],"text":"品牌"}],"saleCatName":"游戏按键","saleCategoryList":{"full":"283:191","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":1,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":1,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":1,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":1,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":1,"text":"散热器","value":"284:190"}],"text":"分类"}},"266":{"classifyTag":1,"mobileShowName":"手机镜头","parentId":186,"saleCatID":266,"saleCatItemList":[{"full":"209:","id":209,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"手机镜头","saleCategoryList":{"full":"266:83","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"352":{"classifyTag":1,"mobileShowName":"身体清洁","parentId":322,"saleCatID":352,"saleCatItemList":[],"saleCatName":"身体清洁","saleCategoryList":{"full":"352:183,217","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"323:30,31,33,43,98,110,134,142,148,156,157,161,171,183,192,216,217,218,219"},{"mobileShowName":"体脂称","tag":1,"text":"体脂称","value":"327:30"},{"mobileShowName":"面部美容","tag":1,"text":"面部美容","value":"324:98,134,157,161,192,216"},{"mobileShowName":"美容美发","tag":1,"text":"美容美发","value":"325:142"},{"mobileShowName":"口腔护理","tag":1,"text":"口腔护理","value":"326:110,148,171,218,219"},{"mobileShowName":"身体清洁","tag":1,"text":"身体清洁","value":"352:183,217"}],"text":"分类"}},"284":{"classifyTag":1,"mobileShowName":"散热器","parentId":181,"saleCatID":284,"saleCatItemList":[{"full":"168:","id":168,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"散热器","saleCategoryList":{"full":"284:190","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"185:79,80,85,111,112,145,146,190,191"},{"mobileShowName":"游戏手柄","tag":1,"text":"游戏手柄","value":"182:80,85"},{"mobileShowName":"游戏键鼠","tag":1,"text":"游戏键鼠","value":"183:111,112,145"},{"mobileShowName":"AR游戏枪","tag":1,"text":"AR游戏枪","value":"262:146"},{"mobileShowName":"游戏按键","tag":1,"text":"游戏按键","value":"283:191"},{"mobileShowName":"散热器","tag":1,"text":"散热器","value":"284:190"}],"text":"分类"}},"347":{"classifyTag":1,"mobileShowName":"餐具","parentId":342,"saleCatID":347,"saleCatItemList":[],"saleCatName":"餐具","saleCategoryList":{"full":"347:172,205","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"348:136,168,170,172,173,174,175,176,178,181,184,187,205,206,207,208,209,210,211"},{"mobileShowName":"生活用品","tag":1,"text":"生活用品","value":"345:168,174,175,184,187,210,211"},{"mobileShowName":"清洁用品","tag":1,"text":"清洁用品","value":"344:178,181,208,209"},{"mobileShowName":"厨房用品","tag":1,"text":"厨房用品","value":"343:176,207"},{"mobileShowName":"收纳用品","tag":1,"text":"收纳用品","value":"346:170,206"},{"mobileShowName":"餐具","tag":1,"text":"餐具","value":"347:172,205"}],"text":"分类"}},"335":{"classifyTag":1,"mobileShowName":"移动存储","parentId":186,"saleCatID":335,"saleCatItemList":[{"full":"209:1","id":209,"showAll":1,"sub":[{"text":"魅族","value":"209:1"}],"text":"品牌"}],"saleCatName":"移动存储","saleCategoryList":{"full":"335:40,42,46","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"336":{"classifyTag":1,"mobileShowName":"电话卡","parentId":186,"saleCatID":336,"saleCatItemList":[{"full":"209:","id":209,"showAll":1,"sub":[],"text":"品牌"}],"saleCatName":"电话卡","saleCategoryList":{"full":"336:25","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"241:21,22,23,26,83,87,109,131"},{"mobileShowName":"移动电源","tag":1,"text":"移动电源","value":"187:26"},{"mobileShowName":"壳膜套","tag":1,"text":"壳膜套","value":"237:21"},{"mobileShowName":"数据线","tag":1,"text":"数据线","value":"239:22"},{"mobileShowName":"电源适配器","tag":1,"text":"电源适配器","value":"240:23"},{"mobileShowName":"手机镜头","tag":1,"text":"手机镜头","value":"266:83"},{"mobileShowName":"移动存储","tag":1,"text":"移动存储","value":"335:40,42,46"},{"mobileShowName":"电话卡","tag":1,"text":"电话卡","value":"336:25"}],"text":"分类"}},"273":{"classifyTag":1,"mobileShowName":"毛球修剪器","parentId":222,"saleCatID":273,"saleCatItemList":[{"full":"190:23743","id":190,"showAll":1,"sub":[{"text":"飞科","value":"190:23743"}],"text":"品牌"}],"saleCatName":"毛球修剪器","saleCategoryList":{"full":"273:158","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"260":{"classifyTag":1,"mobileShowName":"运动水杯","parentId":222,"saleCatID":260,"saleCatItemList":[{"full":"190:25678","id":190,"showAll":1,"sub":[{"text":"Corkcicle","value":"190:25678"}],"text":"品牌"}],"saleCatName":"水杯","saleCategoryList":{"full":"260:136","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"263":{"classifyTag":1,"mobileShowName":"垃圾桶","parentId":222,"saleCatID":263,"saleCatItemList":[{"full":"190:25300","id":190,"showAll":1,"sub":[{"text":"UMBRA","value":"190:25300"}],"text":"品牌"}],"saleCatName":"垃圾桶","saleCategoryList":{"full":"263:149","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"264":{"classifyTag":1,"mobileShowName":"戒指托","parentId":222,"saleCatID":264,"saleCatItemList":[{"full":"190:25300","id":190,"showAll":1,"sub":[{"text":"UMBRA","value":"190:25300"}],"text":"品牌"}],"saleCatName":"戒指托","saleCategoryList":{"full":"264:150","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}},"267":{"classifyTag":1,"mobileShowName":"衣挂钩","parentId":222,"saleCatID":267,"saleCatItemList":[{"full":"190:25300","id":190,"showAll":1,"sub":[{"text":"UMBRA","value":"190:25300"}],"text":"品牌"}],"saleCatName":"衣挂钩","saleCategoryList":{"full":"267:152","sub":[{"mobileShowName":"全部","tag":1,"text":"全部","value":"223:48,55,56,92,116,136,140,141,144,149,150,152,153,154,155,158,164,165,166,176,195"},{"mobileShowName":"包","tag":1,"text":"包","value":"224:48,92,140"},{"mobileShowName":"眼镜","tag":1,"text":"眼镜","value":"285:195"},{"mobileShowName":"毛球修剪器","tag":1,"text":"毛球修剪器","value":"273:158"},{"mobileShowName":"运动水杯","tag":1,"text":"水杯","value":"260:136"},{"mobileShowName":"垃圾桶","tag":1,"text":"垃圾桶","value":"263:149"},{"mobileShowName":"戒指托","tag":1,"text":"戒指托","value":"264:150"},{"mobileShowName":"衣挂钩","tag":1,"text":"衣挂钩","value":"267:152"}],"text":"分类"}}},active: 76,totalPage:1,features:{}}
+
+</script>
+<script src="static/js/list-01c3e099de.js"></script>
+
+<script>
+    var __mzt = __mzt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//sccom.res.meizu.com/js/analytics-min.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = ('https:' == document.location.protocol ? 'https://tongji-res.meizu.com' : 'http://tongji-res1.meizu.com') + '/resources/tongji/flow.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?2a0c04774115b182994cfcacf4c122e9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>    </body>
+    </html>

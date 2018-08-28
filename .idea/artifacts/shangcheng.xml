@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="shangcheng">
+    <output-path>$PROJECT_DIR$/../shangchengbackup</output-path>
+    <root id="archive" name="shangcheng.war">
+      <element id="artifact" artifact-name="shangcheng-manager-web:war exploded" />
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+    </root>
+  </artifact>
+</component>

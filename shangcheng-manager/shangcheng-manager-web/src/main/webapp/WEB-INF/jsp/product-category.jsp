@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="${pageContext.request.contextPath}lib/html5shiv.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}lib/respond.min.js"></script>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/css/H-ui.admin.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/skin/default/skin.css" id="skin" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+    <link rel="stylesheet" href="lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <!--[if IE 6]>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <title>商品分类</title>
@@ -98,23 +98,23 @@
     </tr>
 </table>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/zTree/v3/js/jquery.ztree.all-3.5.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="lib/zTree/v3/js/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
 
     /*文本输入限制*/
-   /* $(".textarea").Huitextarealength({
+    $(".textarea").Huitextarealength({
         minlength:0,
         maxlength:100
-    });*/
+    });
 
     function chooseParent(){
         layer_show("选择父节点分类","choose-parent-category",300,510);
@@ -122,10 +122,10 @@
 
     var isParent=false,id="",name="";
 
-   /* var index = layer.load(3);*/
+    var index = layer.load(3);
 
     var setting = {
-        /*view: {
+        view: {
             dblClickExpand: true,
             showLine: true,
             selectedMulti: false
@@ -137,12 +137,12 @@
                 pIdKey: "pId",
                 rootPId: ""
             }
-        },*/
+        },
         async: {
             enable: true,
-            url: "${pageContext.request.contextPath}/item/cat/list",
+            url: "/item/cat/list",
             type: "GET",
-            contentType: "${pageContext.request.contextPath}/application/json",
+            contentType: "application/json",
             autoParam: ["id"]
         },
         callback: {
@@ -178,7 +178,7 @@
         }
     };
 
-    /*function changeSwitch1(value){
+    function changeSwitch1(value){
         if(value==1){
             $('#parentSwitch').bootstrapSwitch('setState', true);
         }else{
@@ -217,7 +217,7 @@
         t = $.fn.zTree.init(t, setting);
         demoIframe = $("#testIframe");
         var zTree = $.fn.zTree.getZTreeObj("tree");
-    }*/
+    }
 
     //保存提交
     $("#category-edit").validate({
@@ -309,9 +309,9 @@
         });
     }
 
-    /*function msgSuccess(content){
+    function msgSuccess(content){
         layer.msg(content, {icon: 1,time:3000});
-    }*/
+    }
 </script>
 </body>
 </html>

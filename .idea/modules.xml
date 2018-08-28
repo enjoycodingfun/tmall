@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-common/shangcheng-common.iml" filepath="$PROJECT_DIR$/shangcheng-common/shangcheng-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-consumer/shangcheng-consumer.iml" filepath="$PROJECT_DIR$/shangcheng-consumer/shangcheng-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-detail/shangcheng-detail.iml" filepath="$PROJECT_DIR$/shangcheng-detail/shangcheng-detail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-manager/shangcheng-manager.iml" filepath="$PROJECT_DIR$/shangcheng-manager/shangcheng-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-dao/shangcheng-manager-dao.iml" filepath="$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-dao/shangcheng-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-interface/shangcheng-manager-interface.iml" filepath="$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-interface/shangcheng-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-pojo/shangcheng-manager-pojo.iml" filepath="$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-pojo/shangcheng-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-service/shangcheng-manager-service.iml" filepath="$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-service/shangcheng-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-web/shangcheng-manager-web.iml" filepath="$PROJECT_DIR$/shangcheng-manager/shangcheng-manager-web/shangcheng-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-parent/shangcheng-parent.iml" filepath="$PROJECT_DIR$/shangcheng-parent/shangcheng-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-portal/shangcheng-portal.iml" filepath="$PROJECT_DIR$/shangcheng-portal/shangcheng-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-product/shangcheng-product.iml" filepath="$PROJECT_DIR$/shangcheng-product/shangcheng-product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-product/shangcheng-product-dao/shangcheng-product-dao.iml" filepath="$PROJECT_DIR$/shangcheng-product/shangcheng-product-dao/shangcheng-product-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-product/shangcheng-product-interface/shangcheng-product-interface.iml" filepath="$PROJECT_DIR$/shangcheng-product/shangcheng-product-interface/shangcheng-product-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-product/shangcheng-product-pojo/shangcheng-product-pojo.iml" filepath="$PROJECT_DIR$/shangcheng-product/shangcheng-product-pojo/shangcheng-product-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-product/shangcheng-product-service/shangcheng-product-service.iml" filepath="$PROJECT_DIR$/shangcheng-product/shangcheng-product-service/shangcheng-product-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-product/shangcheng-product-web/shangcheng-product-web.iml" filepath="$PROJECT_DIR$/shangcheng-product/shangcheng-product-web/shangcheng-product-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-provider/shangcheng-provider.iml" filepath="$PROJECT_DIR$/shangcheng-provider/shangcheng-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-quartz/shangcheng-quartz.iml" filepath="$PROJECT_DIR$/shangcheng-quartz/shangcheng-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-search/shangcheng-search.iml" filepath="$PROJECT_DIR$/shangcheng-search/shangcheng-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shangcheng-shiro/shangcheng-shiro.iml" filepath="$PROJECT_DIR$/shangcheng-shiro/shangcheng-shiro.iml" />
+    </modules>
+  </component>
+</project>

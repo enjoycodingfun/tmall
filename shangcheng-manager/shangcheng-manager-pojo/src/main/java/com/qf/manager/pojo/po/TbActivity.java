@@ -1,5 +1,8 @@
 package com.qf.manager.pojo.po;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TbActivity {
     private String aid;
 
